@@ -1,0 +1,28 @@
+{
+  "app_name": "Flit Notes",
+  "let_it_go": "Let it go",
+  "create_note": "Create Note",
+  "invalid_note_length": "Note length must be between 1 and {count} characters.",
+  "@invalid_note_length": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "select_expiration_time": "Select Expiration Time",
+  "note_will_expire_in": "Note will expire in {hours, plural, =1 {1 hour} other {{hours} hours}}",
+  "@note_will_expire_in": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "error": "Error",
+  "ok": "OK",
+  "share": "Share",
+  "sensitive_information_warning": "This app is not a secure place to store sensitive information. Please do not store any sensitive information in this app.",
+  "note_security_warning": "All notes created using this app anonymous and can be viewed by anyone who has access to the qr code or url.",
+  "note_expiration_warning": "Please note that any notes created with this app will no longer be accessible after the number of hours specified upon creation. And will be permanently deleted after 24 hours."
+}

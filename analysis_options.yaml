@@ -1,0 +1,11 @@
+# https://dart.dev/guides/language/analysis-options
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    flutter_style_todos: true
+
+analyzer:
+  errors:
+    todo: ignore

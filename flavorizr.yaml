@@ -1,0 +1,45 @@
+flavors:
+  dev:
+    app:
+      name: "Flit Notes Dev"
+
+    android:
+      applicationId: "wtf.bruce.flitnotes.dev"
+    ios:
+      bundleId: "wtf.bruce.flitnotes.dev"
+    macos:
+      bundleId: "wtf.bruce.flitnotes.dev"
+
+  prod:
+    app:
+      name: "Flit Notes"
+
+    android:
+      applicationId: "wtf.bruce.flitnotes"
+    ios:
+      bundleId: "wtf.bruce.flitnotes"
+    macos:
+      bundleId: "wtf.bruce.flitnotes"
+
+instructions:
+  - assets:download
+  - assets:extract
+  - android:buildGradle
+  - android:androidManifest
+  - android:dummyAssets
+  - android:icons
+  - ios:xcconfig
+  - ios:buildTargets
+  - ios:schema
+  - ios:plist
+  - ios:icons
+  - ios:dummyAssets
+  - macos:xcconfig
+  - macos:buildTargets
+  - macos:schema
+  - macos:plist
+  - macos:icons
+  - macos:dummyAssets
+  - flutter:flavors
+  - flutter:targets
+  - assets:clean

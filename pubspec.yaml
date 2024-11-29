@@ -1,0 +1,88 @@
+name: flit_notes
+description: "Flit notes app"
+publish_to: 'none'
+version: 0.0.1+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  intl: any
+  meta: 1.15.0
+
+  # Dependencies
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.7
+  dio: ^5.7.0
+  json_annotation: ^4.9.0
+  formz: ^0.8.0
+  auto_route: ^9.2.2
+  uuid: ^4.5.1
+  share_plus: ^10.1.2
+  widgets_to_image: ^1.0.0
+  qr_flutter: ^4.1.0
+  flutter_dotenv: ^5.2.1
+  flutter_secure_storage: ^9.2.2
+  infinite_scroll_pagination: ^4.1.0
+  flutter_native_splash: ^2.4.3
+  google_fonts: ^6.2.1
+  pretty_dio_logger: ^1.4.0
+
+  # Dependency injection
+  get_it: ^8.0.2
+  injectable: ^2.5.0
+
+
+
+    # Local dependencies
+  networking:
+    git:
+      url: git@github.com:Brandon-RS/dart_packages.git
+      ref: main
+      path: "packages/networking"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+  # Generators
+  build_runner: ^2.4.13
+  injectable_generator: ^2.6.2
+  json_serializable: ^6.9.0
+  auto_route_generator: ^9.0.0
+  flutter_flavorizr: ^2.2.3
+
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+    - assets/
+    - env/
+
+flutter_native_splash:
+  # Light theme
+  color: "#e5e5e5"
+  image: assets/branding/icon-dark.png
+
+  # Dark theme
+  color_dark: "#21252b"
+  image_dark: assets/branding/icon-light.png
+
+  branding_mode: bottom
+  branding_bottom_padding: 25
+
+  android_12:
+    # Light theme
+    color: "#e5e5e5"
+    image: assets/branding/icon-dark.png
+
+    # Dark theme
+    color_dark: "#21252b"
+    image_dark: assets/branding/icon-light.png
