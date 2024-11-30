@@ -1,13 +1,8 @@
-import 'dart:typed_data';
-
-import 'package:flit_notes/base/configs/env.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
-import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/note_details_cubit/note_details_cubit.dart';
+import 'package:flit_notes/features/notes/presentation/widgets/qr_code_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
 class NoteDetails extends StatefulWidget {
@@ -23,9 +18,7 @@ class NoteDetails extends StatefulWidget {
 }
 
 class _NoteDetailsState extends State<NoteDetails> {
-  // TODO(BRANDOM): Extract all logic related to the QR code the cubit
   late final WidgetsToImageController controller;
-  Uint8List? bytes;
 
   @override
   void initState() {
@@ -46,38 +39,16 @@ class _NoteDetailsState extends State<NoteDetails> {
               const SizedBox(height: 20),
               WidgetsToImage(
                 controller: controller,
-                child: QrImageView(
-                  backgroundColor: context.colors.surface,
-                  data: noteUrl(state.note!.id),
+                child: QrCodeWidget(
+                  data: state.noteUrl,
                   size: 200.0,
-                  eyeStyle: QrEyeStyle(
-                    eyeShape: QrEyeShape.square,
-                    color: context.colors.primary,
-                  ),
-                  dataModuleStyle: QrDataModuleStyle(
-                    dataModuleShape: QrDataModuleShape.square,
-                    color: context.colors.primary,
-                  ),
                 ),
               ),
-              // share button
               const SizedBox(height: 20),
               FilledButton.icon(
                 icon: const Icon(Icons.share),
                 label: Text(context.localizations.share),
-                onPressed: () async {
-                  final bytes = await controller.capture();
-
-                  if (bytes == null) {
-                    return;
-                  }
-
-                  await Share.shareXFiles(
-                    [XFile.fromData(bytes, name: 'note.png', mimeType: 'image/png')],
-                    text: noteUrl(state.note!.id),
-                    fileNameOverrides: ['flit-note.png'],
-                  );
-                },
+                onPressed: () async => context.read<NoteDetailsCubit>().shareNote(await controller.capture()),
               ),
             ],
           ),
@@ -85,6 +56,4 @@ class _NoteDetailsState extends State<NoteDetails> {
       ),
     );
   }
-
-  String noteUrl(String? id) => '${Env.webUrl}/${AppRouter.notesPath}/$id'.trim();
 }

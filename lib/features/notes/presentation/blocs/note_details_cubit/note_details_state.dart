@@ -18,6 +18,8 @@ class NoteDetailsState extends Equatable {
   final NoteModel? note;
   final BlocStatus status;
 
+  String get noteUrl => '${Env.webUrl}/${AppRouter.notesPath}/${note?.id}'.trim();
+
   @override
   List<Object?> get props => [note, status];
 }
