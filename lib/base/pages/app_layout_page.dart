@@ -6,5 +6,5 @@ class AppLayoutPage extends StatelessWidget {
   const AppLayoutPage({super.key});
 
   @override
-  Widget build(BuildContext context) => Scaffold(body: AutoRouter());
+  Widget build(BuildContext context) => const Scaffold(body: AutoRouter());
 }

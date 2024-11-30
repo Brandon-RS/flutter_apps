@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/pages/app_layout_page.dart';
+import 'package:flit_notes/base/pages/unknown_page.dart';
 import 'package:flit_notes/features/home/presentation/pages/home_page.dart';
 import 'package:flit_notes/features/notes/presentation/pages/note_details_page.dart';
 import 'package:flit_notes/features/notes/presentation/pages/notes_page.dart';
@@ -20,11 +21,12 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: NotesRoute.page,
               path: notesPath,
-              // guards: [NotesRouteGuard()],
               children: [
+                AutoRoute(path: '', page: UnknownRoute.page),
                 AutoRoute(page: NoteDetailsRoute.page, path: idPath),
               ],
             ),
+            AutoRoute(path: '*', page: UnknownRoute.page),
           ],
         ),
       ];

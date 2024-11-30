@@ -32,7 +32,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       return;
     }
 
-    final newDeviceId = Uuid().v4();
+    final newDeviceId = const Uuid().v4();
     await _storage.write(key: 'device_id', value: newDeviceId);
     emit(AppLoaded(newDeviceId));
   }

@@ -22,7 +22,7 @@ enum BlocStatus {
     // TODO(BRANDOM): Build default widgets
     return switch (this) {
       BlocStatus.initial => onInitial?.call() ?? const SizedBox.shrink(),
-      BlocStatus.loading => onLoading?.call() ?? Center(child: const CircularProgressIndicator()),
+      BlocStatus.loading => onLoading?.call() ?? const Center(child: CircularProgressIndicator()),
       BlocStatus.success => onSuccess(),
       BlocStatus.error => onError?.call() ?? Text(Resources.I.appContext!.localizations.error),
     };

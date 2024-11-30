@@ -7,7 +7,7 @@ import 'package:flit_notes/features/notes/domain/repos/notes_repo.dart';
 part 'edit_note_state.dart';
 
 class EditNoteCubit extends Cubit<EditNoteState> {
-  EditNoteCubit() : super(EditNoteState());
+  EditNoteCubit() : super(const EditNoteState());
 
   final NotesRepo _notesRepo = getIt<NotesRepo>();
 
@@ -43,5 +43,5 @@ class EditNoteCubit extends Cubit<EditNoteState> {
     }
   }
 
-  void reset() => emit(EditNoteState());
+  void reset() => emit(const EditNoteState());
 }

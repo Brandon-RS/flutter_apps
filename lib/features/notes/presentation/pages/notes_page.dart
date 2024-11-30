@@ -6,5 +6,5 @@ class NotesPage extends StatelessWidget {
   const NotesPage({super.key});
 
   @override
-  Widget build(BuildContext context) => AutoRouter();
+  Widget build(BuildContext context) => const AutoRouter();
 }

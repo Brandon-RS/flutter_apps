@@ -14,17 +14,17 @@ import 'package:share_plus/share_plus.dart';
 part 'note_details_state.dart';
 
 class NoteDetailsCubit extends Cubit<NoteDetailsState> {
-  NoteDetailsCubit() : super(NoteDetailsState.initial());
+  NoteDetailsCubit() : super(const NoteDetailsState.initial());
 
   final NotesRepo _notesRepo = getIt<NotesRepo>();
 
   Future<void> getNoteDetails(String id) async {
-    emit(NoteDetailsState.loading());
+    emit(const NoteDetailsState.loading());
     try {
       final note = await _notesRepo.getNote(noteId: id);
       emit(NoteDetailsState.success(note.data));
     } catch (e) {
-      emit(NoteDetailsState.error());
+      emit(const NoteDetailsState.error());
     }
   }
 

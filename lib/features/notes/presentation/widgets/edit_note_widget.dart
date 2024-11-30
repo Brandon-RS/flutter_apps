@@ -47,7 +47,7 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
             const SizedBox(height: 20),
             const ExpirationTimeSelector(),
             const SizedBox(height: 20),
-            GenerateNoteButton(),
+            const GenerateNoteButton(),
           ],
         ),
       ),
