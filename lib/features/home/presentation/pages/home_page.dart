@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
+import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/edit_note_cubit/edit_note_cubit.dart';
 import 'package:flit_notes/features/notes/presentation/widgets/edit_note_widget.dart';
 import 'package:flutter/material.dart';
@@ -35,12 +36,24 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               // TODO(BRANDOM): Remove this button
-              FilledButton(
-                onPressed: () {
-                  context.router.pushNamed('notes');
-                  // context.router.push(NoteDetailsRoute(id: 'ff0213d4-7845-4ad1-a8bf-29d5804e6567'));
-                },
-                child: const Text('Go to Notes'),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () => context.router.pushNamed('notes'),
+                      child: const Text('Notes'),
+                    ),
+                    const SizedBox(width: 20),
+                    TextButton(
+                      onPressed: () => context.router.push(
+                        NoteDetailsRoute(id: 'ff0213d4-7845-4ad1-a8bf-29d5804e6567'),
+                      ),
+                      child: const Text('Note-id'),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
