@@ -25,9 +25,11 @@ class EditNoteState extends Equatable {
     );
   }
 
-  bool get isNoteValid => note.note.trim().isNotEmpty && note.note.length <= maxLength && note.expiresAfter > 0;
+  bool get isNoteValid => note.content.trim().isNotEmpty && note.content.length <= maxLength && note.expiresAfter > 0;
 
   bool get canSave => isNoteValid && !status.isSubmitting;
+
+  String get draftLink => '${Env.webUrl}/${AppRouter.basePath}?content=${note.content}'.trim();
 
   @override
   List<Object> get props => [note, status];

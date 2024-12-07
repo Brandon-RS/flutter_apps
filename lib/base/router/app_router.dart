@@ -16,7 +16,7 @@ class AppRouter extends RootStackRouter {
           path: appLayoutPath,
           initial: true,
           children: [
-            AutoRoute(path: '', page: HomeRoute.page),
+            AutoRoute(path: basePath, page: HomeRoute.page, initial: true),
             AutoRoute(page: NoteDetailsRoute.page, path: idPath),
             AutoRoute(path: '*', page: UnknownRoute.page),
           ],

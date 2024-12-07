@@ -35,7 +35,7 @@ class _NoteDetailsState extends State<NoteDetails> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(state.note!.note),
+              Text(state.note!.content),
               const SizedBox(height: 20),
               WidgetsToImage(
                 controller: controller,

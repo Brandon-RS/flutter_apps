@@ -3,7 +3,9 @@ import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/edit_note_cubit/edit_note_cubit.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EditNoteWidget extends StatefulWidget {
@@ -15,10 +17,12 @@ class EditNoteWidget extends StatefulWidget {
 
 class _EditNoteWidgetState extends State<EditNoteWidget> {
   late final GlobalKey<FormFieldState> _fieldState;
+  late final String? _content;
 
   @override
   void initState() {
     _fieldState = GlobalKey<FormFieldState>();
+    _content = context.routeData.queryParams.get('content');
     super.initState();
   }
 
@@ -43,11 +47,53 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            NoteField(formKey: _fieldState),
+            NoteField(formKey: _fieldState, content: _content),
             const SizedBox(height: 20),
             const ExpirationTimeSelector(),
             const SizedBox(height: 20),
             const GenerateNoteButton(),
+            const SizedBox(height: 20),
+            BlocBuilder<EditNoteCubit, EditNoteState>(
+              builder: (context, state) => state.isNoteValid
+                  ? RichText(
+                      text: TextSpan(
+                        text: context.localizations.or_you_can,
+                        style: context.textTheme.bodySmall,
+                        children: [
+                          TextSpan(
+                            text: context.localizations.save_your_draft,
+                            style: context.textTheme.bodySmall?.copyWith(
+                              color: context.colors.onPrimaryFixed,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title: Text(
+                                      context.localizations.continue_editing_later,
+                                      style: context.textTheme.titleLarge,
+                                    ),
+                                    content: SelectableText(state.draftLink),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Clipboard.setData(ClipboardData(text: state.draftLink));
+                                          context.router.maybePop();
+                                        },
+                                        child: Text(context.localizations.copy_link),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                          ),
+                        ],
+                      ),
+                    )
+                  : const SizedBox(),
+            ),
           ],
         ),
       ),
@@ -58,16 +104,19 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
 class NoteField extends StatelessWidget {
   const NoteField({
     required this.formKey,
+    this.content,
     super.key,
   });
 
   final GlobalKey<FormFieldState> formKey;
+  final String? content;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EditNoteCubit, EditNoteState>(
       builder: (context, state) => TextFormField(
         key: formKey,
+        initialValue: content,
         readOnly: state.status.isSubmitting,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (note) =>

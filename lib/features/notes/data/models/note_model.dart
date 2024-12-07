@@ -6,7 +6,7 @@ part 'note_model.g.dart';
 @JsonSerializable()
 class NoteModel extends Equatable {
   const NoteModel({
-    required this.note,
+    required this.content,
     required this.expiresAfter,
     this.id,
     this.createdAt,
@@ -16,28 +16,28 @@ class NoteModel extends Equatable {
   factory NoteModel.fromJson(Map<String, dynamic> json) => _$NoteModelFromJson(json);
 
   final String? id;
-  final String note;
+  final String content;
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final int expiresAfter;
 
   const NoteModel.empty()
       : id = null,
-        note = '',
+        content = '',
         createdAt = null,
         updatedAt = null,
         expiresAfter = 1;
 
   NoteModel copyWith({
     String? id,
-    String? note,
+    String? content,
     DateTime? createdAt,
     DateTime? updatedAt,
     int? expiresAfter,
   }) {
     return NoteModel(
       id: id ?? this.id,
-      note: note ?? this.note,
+      content: content ?? this.content,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       expiresAfter: expiresAfter ?? this.expiresAfter,
@@ -47,5 +47,5 @@ class NoteModel extends Equatable {
   Map<String, dynamic> toJson() => _$NoteModelToJson(this);
 
   @override
-  List<Object> get props => [id ?? '', note, expiresAfter];
+  List<Object> get props => [id ?? '', content, expiresAfter];
 }

@@ -27,6 +27,10 @@
   "page_not_found_message": "Well, this is awkward. We couldn't find the page you were looking for.",
   "like_create_note": "Would you like to create a note instead?",
   "go_for_it": "Go for it",
+  "or_you_can": "Or you can ",
+  "continue_editing_later": "continue editing later",
+  "save_your_draft": "Save your draft",
+  "copy_link": "Copy Link",
   "sensitive_information_warning": "This app is not a secure place to store sensitive information. Please do not store any sensitive information in this app.",
   "note_security_warning": "All notes created using this app anonymous and can be viewed by anyone who has access to the qr code or url.",
   "note_expiration_warning": "Please note that any notes created with this app will no longer be accessible after the number of hours specified upon creation. And will be permanently deleted after 24 hours."
