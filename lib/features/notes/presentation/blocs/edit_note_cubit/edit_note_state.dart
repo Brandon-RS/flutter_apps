@@ -29,7 +29,7 @@ class EditNoteState extends Equatable {
 
   bool get canSave => isNoteValid && !status.isSubmitting;
 
-  String get draftLink => '${Env.webUrl}/${AppRouter.basePath}?content=${note.content}'.trim();
+  String get draftLink => '${Env.webUrl}/${AppRouter.basePath}?content=${note.content.trim().encrypt()}';
 
   @override
   List<Object> get props => [note, status];

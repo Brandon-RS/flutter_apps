@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/base/router/app_router.dart';
+import 'package:flit_notes/base/utils/encrypter_utils.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/edit_note_cubit/edit_note_cubit.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,8 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
   @override
   void initState() {
     _fieldState = GlobalKey<FormFieldState>();
-    _content = context.routeData.queryParams.get('content');
+    final String value = context.routeData.queryParams.get('content');
+    _content = value.isNotEmpty ? value.replaceAll(' ', '+').decrypt() : null;
     super.initState();
   }
 
@@ -61,7 +63,7 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
                         style: context.textTheme.bodySmall,
                         children: [
                           TextSpan(
-                            text: context.localizations.save_your_draft,
+                            text: context.localizations.continue_editing_later,
                             style: context.textTheme.bodySmall?.copyWith(
                               color: context.colors.onPrimaryFixed,
                               fontWeight: FontWeight.bold,
@@ -72,7 +74,7 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
                                   context: context,
                                   builder: (context) => AlertDialog(
                                     title: Text(
-                                      context.localizations.continue_editing_later,
+                                      context.localizations.save_your_draft,
                                       style: context.textTheme.titleLarge,
                                     ),
                                     content: SelectableText(state.draftLink),

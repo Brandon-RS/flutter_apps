@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flit_notes/base/configs/env.dart';
 import 'package:flit_notes/base/di/di_entry_point.dart';
 import 'package:flit_notes/base/router/app_router.dart';
+import 'package:flit_notes/base/utils/encrypter_utils.dart';
 import 'package:flit_notes/features/notes/data/models/note_model.dart';
 import 'package:flit_notes/features/notes/domain/repos/notes_repo.dart';
 
@@ -17,7 +18,7 @@ class EditNoteCubit extends Cubit<EditNoteState> {
     emit(
       state.copyWith(
         status: EditNoteStatus.editing,
-        note: state.note.copyWith(content: note),
+        note: state.note.copyWith(content: note, expiresAfter: expiresAfter),
       ),
     );
   }
@@ -27,10 +28,10 @@ class EditNoteCubit extends Cubit<EditNoteState> {
 
     try {
       if (state.note.id == null) {
-        final result = await _notesRepo.createNote(note: state.note);
+        final result = await _notesRepo.createNote(note: state.note.encrypted);
         emit(
           state.copyWith(
-            note: result.data,
+            note: result.data.decrypted,
             status: EditNoteStatus.success,
           ),
         );

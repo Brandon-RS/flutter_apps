@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flit_notes/base/utils/encrypter_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'note_model.g.dart';
@@ -43,6 +44,10 @@ class NoteModel extends Equatable {
       expiresAfter: expiresAfter ?? this.expiresAfter,
     );
   }
+
+  NoteModel get encrypted => copyWith(content: content.encrypt());
+
+  NoteModel get decrypted => copyWith(content: content.decrypt());
 
   Map<String, dynamic> toJson() => _$NoteModelToJson(this);
 

@@ -22,7 +22,7 @@ class NoteDetailsCubit extends Cubit<NoteDetailsState> {
     emit(const NoteDetailsState.loading());
     try {
       final note = await _notesRepo.getNote(noteId: id);
-      emit(NoteDetailsState.success(note.data));
+      emit(NoteDetailsState.success(note.data.decrypted));
     } catch (e) {
       emit(const NoteDetailsState.error());
     }

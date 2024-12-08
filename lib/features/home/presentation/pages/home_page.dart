@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextButton(
                   onPressed: () => context.router.push(
-                    NoteDetailsRoute(id: 'ff0213d4-7845-4ad1-a8bf-29d5804e6567'),
+                    NoteDetailsRoute(id: '3c5f74bc-1a6a-4bc2-abf6-b28ba281c283'),
                   ),
                   child: const Text('Note-id'),
                 ),
