@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:networking/networking.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -12,10 +13,7 @@ class Env {
     await dotenv.load(fileName: fileName);
     NetworkModuleSettings.init(
       baseUrl: baseUrl,
-      interceptors: [
-        // TODO(BRANDOM): Add this only for debug builds
-        PrettyDioLogger(),
-      ],
+      interceptors: [if (kDebugMode) PrettyDioLogger()],
     );
   }
 

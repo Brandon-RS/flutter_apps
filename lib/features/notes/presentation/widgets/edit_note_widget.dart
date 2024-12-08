@@ -23,8 +23,8 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
   @override
   void initState() {
     _fieldState = GlobalKey<FormFieldState>();
-    final String value = context.routeData.queryParams.get('content');
-    _content = value.isNotEmpty ? value.replaceAll(' ', '+').decrypt() : null;
+    final String? value = context.routeData.queryParams.get('content');
+    _content = value != null && value.isNotEmpty ? value.replaceAll(' ', '+').decrypt() : null;
     super.initState();
   }
 
