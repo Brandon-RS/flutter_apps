@@ -1,8 +1,8 @@
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/note_details_cubit/note_details_cubit.dart';
-import 'package:flit_notes/features/notes/presentation/widgets/qr_code_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
 class NoteDetails extends StatefulWidget {
@@ -39,7 +39,8 @@ class _NoteDetailsState extends State<NoteDetails> {
               const SizedBox(height: 20),
               WidgetsToImage(
                 controller: controller,
-                child: QrCodeWidget(
+                child: QrImageView(
+                  backgroundColor: context.colors.surface,
                   data: state.noteUrl,
                   size: 200.0,
                 ),
