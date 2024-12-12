@@ -1,5 +1,6 @@
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/note_details_cubit/note_details_cubit.dart';
+import 'package:flit_notes/features/timer/presentation/widgets/timer_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -45,6 +46,8 @@ class _NoteDetailsState extends State<NoteDetails> {
                   size: 200.0,
                 ),
               ),
+              const SizedBox(height: 20),
+              CounterWidget(duration: state.note!.expiresDuration!.inSeconds),
               const SizedBox(height: 20),
               FilledButton.icon(
                 icon: const Icon(Icons.share),
