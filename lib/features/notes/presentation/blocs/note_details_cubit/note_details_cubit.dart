@@ -19,12 +19,13 @@ class NoteDetailsCubit extends Cubit<NoteDetailsState> {
 
   Future<void> getNoteDetails(String id) async {
     emit(const NoteDetailsState.loading());
-    try {
-      final note = await _notesRepo.getNote(noteId: id);
-      emit(NoteDetailsState.success(note.data.decrypted));
-    } catch (e) {
-      emit(const NoteDetailsState.error());
-    }
+
+    final result = await _notesRepo.getNote(noteId: id);
+
+    result.fold(
+      onData: (note) => emit(NoteDetailsState.success(note.decrypted)),
+      onError: (_) => emit(const NoteDetailsState.error()),
+    );
   }
 
   Future<void> shareNote(Uint8List? bytes) async {

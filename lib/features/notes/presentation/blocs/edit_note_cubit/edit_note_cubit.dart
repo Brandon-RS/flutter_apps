@@ -26,22 +26,12 @@ class EditNoteCubit extends Cubit<EditNoteState> {
   Future<void> saveNote() async {
     emit(state.copyWith(status: EditNoteStatus.submitting));
 
-    try {
-      if (state.note.id == null) {
-        final result = await _notesRepo.createNote(note: state.note.encrypted);
-        emit(
-          state.copyWith(
-            note: result.data.decrypted,
-            status: EditNoteStatus.success,
-          ),
-        );
-      }
-    } catch (e) {
-      emit(
-        state.copyWith(
-          status: EditNoteStatus.error,
-          error: e.toString(),
-        ),
+    if (state.note.id == null) {
+      final result = await _notesRepo.createNote(note: state.note.encrypted);
+
+      result.fold(
+        onData: (note) => emit(state.copyWith(note: note.decrypted, status: EditNoteStatus.success)),
+        onError: (e) => emit(state.copyWith(status: EditNoteStatus.error, error: e.toString())),
       );
     }
   }
