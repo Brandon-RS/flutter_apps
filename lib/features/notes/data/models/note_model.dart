@@ -54,7 +54,7 @@ class NoteModel extends Equatable {
       return null;
     }
 
-    return createdAt!.add(Duration(minutes: expiresAfter)).difference(DateTime.now());
+    return createdAt!.add(Duration(hours: expiresAfter)).difference(DateTime.now());
   }
 
   Map<String, dynamic> toJson() => _$NoteModelToJson(this);

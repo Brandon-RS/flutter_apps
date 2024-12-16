@@ -43,7 +43,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   ) {
     if (state is TimerRunInProgress) {
       _tickerSubscription?.pause();
-      emit(TimerRunPause(state.duration));
+      emit(TimerRunPause(state.seconds));
     }
   }
 
@@ -53,7 +53,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   ) {
     if (state is TimerRunPause) {
       _tickerSubscription?.resume();
-      emit(TimerRunInProgress(state.duration));
+      emit(TimerRunInProgress(state.seconds));
     }
   }
 

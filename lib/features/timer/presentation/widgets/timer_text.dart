@@ -3,18 +3,18 @@ import 'package:flit_notes/features/timer/presentation/blocs/timer_bloc/timer_bl
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CounterWidget extends StatelessWidget {
-  const CounterWidget({
-    required this.duration,
+class TimerWidget extends StatelessWidget {
+  const TimerWidget({
+    required this.seconds,
     super.key,
   });
 
-  final int duration;
+  final int seconds;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => TimerBloc(duration: duration)..add(TimerStarted(duration: duration)),
+      create: (_) => TimerBloc(duration: seconds)..add(TimerStarted(duration: seconds)),
       child: const _TimerText(key: Key('timer_text_key')),
     );
   }
@@ -25,14 +25,13 @@ class _TimerText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO(BRANDOM): Maybe the duration property as a Duration instead of int
-    final duration = context.select((TimerBloc bloc) => bloc.state.duration);
-    final hoursStr = ((duration / (60 * 60)) % 60).floor().toString().padLeft(2, '0');
-    final minutesStr = ((duration / 60) % 60).floor().toString().padLeft(2, '0');
-    final secondsStr = (duration % 60).toString().padLeft(2, '0');
+    final duration = context.select((TimerBloc bloc) => bloc.state.seconds);
+    final hours = ((duration / (60 * 60)) % 60).floor().toString().padLeft(2, '0');
+    final minutes = ((duration / 60) % 60).floor().toString().padLeft(2, '0');
+    final seconds = (duration % 60).toString().padLeft(2, '0');
 
     return Text(
-      '$hoursStr:$minutesStr:$secondsStr',
+      '$hours:$minutes:$seconds',
       style: context.textTheme.bodyLarge,
     );
   }

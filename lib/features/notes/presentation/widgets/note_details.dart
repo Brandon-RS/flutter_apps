@@ -47,7 +47,7 @@ class _NoteDetailsState extends State<NoteDetails> {
                 ),
               ),
               const SizedBox(height: 20),
-              CounterWidget(duration: state.note!.expiresDuration!.inSeconds),
+              TimerWidget(seconds: state.note!.expiresDuration!.inSeconds),
               const SizedBox(height: 20),
               FilledButton.icon(
                 icon: const Icon(Icons.share),
