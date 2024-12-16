@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
+import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/note_details_cubit/note_details_cubit.dart';
 import 'package:flit_notes/features/timer/presentation/widgets/timer_text.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +49,10 @@ class _NoteDetailsState extends State<NoteDetails> {
                 ),
               ),
               const SizedBox(height: 20),
-              TimerWidget(seconds: state.note!.expiresDuration!.inSeconds),
+              TimerWidget(
+                seconds: state.note!.expiresDuration!.inSeconds,
+                onTimerEnd: () => context.router.replaceAll(const [HomeRoute()]),
+              ),
               const SizedBox(height: 20),
               FilledButton.icon(
                 icon: const Icon(Icons.share),

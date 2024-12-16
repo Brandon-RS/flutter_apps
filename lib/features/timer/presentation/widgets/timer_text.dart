@@ -6,33 +6,41 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class TimerWidget extends StatelessWidget {
   const TimerWidget({
     required this.seconds,
+    this.onTimerEnd,
     super.key,
   });
 
   final int seconds;
+  final VoidCallback? onTimerEnd;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => TimerBloc(duration: seconds)..add(TimerStarted(duration: seconds)),
-      child: const _TimerText(key: Key('timer_text_key')),
+      child: _TimerText(key: const Key('timer_text_key'), onTimerEnd: onTimerEnd),
     );
   }
 }
 
 class _TimerText extends StatelessWidget {
-  const _TimerText({super.key});
+  const _TimerText({
+    this.onTimerEnd,
+    super.key,
+  });
+
+  final VoidCallback? onTimerEnd;
 
   @override
   Widget build(BuildContext context) {
-    final duration = context.select((TimerBloc bloc) => bloc.state.seconds);
-    final hours = ((duration / (60 * 60)) % 60).floor().toString().padLeft(2, '0');
-    final minutes = ((duration / 60) % 60).floor().toString().padLeft(2, '0');
-    final seconds = (duration % 60).toString().padLeft(2, '0');
+    return BlocConsumer<TimerBloc, TimerState>(
+      listener: (context, state) => state is TimerRunComplete ? onTimerEnd?.call() : null,
+      builder: (context, state) {
+        final hours = ((state.seconds / (60 * 60)) % 60).floor().toString().padLeft(2, '0');
+        final minutes = ((state.seconds / 60) % 60).floor().toString().padLeft(2, '0');
+        final seconds = (state.seconds % 60).toString().padLeft(2, '0');
 
-    return Text(
-      '$hours:$minutes:$seconds',
-      style: context.textTheme.bodyLarge,
+        return Text('$hours:$minutes:$seconds', style: context.textTheme.bodyLarge);
+      },
     );
   }
 }
