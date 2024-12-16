@@ -59,13 +59,15 @@ dev_dependencies:
   json_serializable: ^6.9.0
   auto_route_generator: ^9.0.0
   flutter_flavorizr: ^2.2.3
+  flutter_gen_runner: ^5.8.0
 
 flutter:
   generate: true
   uses-material-design: true
   assets:
-    - assets/
     - env/
+    - assets/
+    - assets/images/
 
 flutter_native_splash:
   # Light theme
@@ -87,3 +89,13 @@ flutter_native_splash:
     # Dark theme
     color_dark: "#21252b"
     image_dark: assets/branding/icon-light.png
+
+flutter_gen:
+  output: lib/gen/assets/
+  line_length: 120
+
+  integrations:
+    flutter_svg: true
+    flare_flutter: false
+    rive: false
+    lottie: false
