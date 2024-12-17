@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/constants/app_sizes.dart';
+import 'package:flit_notes/base/constants/constants.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/base/utils/encrypter_utils.dart';
@@ -24,7 +25,10 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
   void initState() {
     _fieldState = GlobalKey<FormFieldState>();
     final String? value = context.routeData.queryParams.get('content');
-    _content = value != null && value.isNotEmpty ? value.replaceAll(' ', '+').decrypt() : null;
+    if (value != null && value.trim().isNotEmpty) {
+      _content = value.replaceAll(' ', '+').decrypt();
+      context.read<EditNoteCubit>().changeNote(note: _content);
+    }
     super.initState();
   }
 
@@ -72,21 +76,26 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
                               ..onTap = () {
                                 showDialog(
                                   context: context,
-                                  builder: (context) => AlertDialog(
-                                    title: Text(
-                                      context.localizations.save_your_draft,
-                                      style: context.textTheme.titleLarge,
-                                    ),
-                                    content: SelectableText(state.draftLink),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Clipboard.setData(ClipboardData(text: state.draftLink));
-                                          context.router.maybePop();
-                                        },
-                                        child: Text(context.localizations.copy_link),
+                                  builder: (context) => Center(
+                                    child: ConstrainedBox(
+                                      constraints: const BoxConstraints(maxWidth: kSmallScreenMaxWidth),
+                                      child: AlertDialog(
+                                        title: Text(
+                                          context.localizations.save_your_draft,
+                                          style: context.textTheme.titleLarge,
+                                        ),
+                                        content: SelectableText(state.draftLink),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Clipboard.setData(ClipboardData(text: state.draftLink));
+                                              context.router.maybePop();
+                                            },
+                                            child: Text(context.localizations.copy_link),
+                                          ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 );
                               },
