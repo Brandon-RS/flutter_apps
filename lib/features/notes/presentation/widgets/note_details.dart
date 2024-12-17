@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flit_notes/base/constants/constants.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/note_details_cubit/note_details_cubit.dart';
@@ -44,9 +45,15 @@ class _NoteDetailsState extends State<NoteDetails> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SelectableText(
-                  state.note!.content,
-                  style: context.textTheme.bodyLarge,
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: kSmallScreenMaxWidth),
+                  child: SelectableText(
+                    state.note!.content,
+                    style: context.textTheme.bodyLarge?.copyWith(
+                      fontSize: 18,
+                    ),
+                    textAlign: TextAlign.justify,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 WidgetsToImage(

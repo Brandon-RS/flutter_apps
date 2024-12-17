@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/constants/app_sizes.dart';
+import 'package:flit_notes/base/constants/constants.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/edit_note_cubit/edit_note_cubit.dart';
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
               BlocProvider(
                 create: (_) => EditNoteCubit(),
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 550),
+                  constraints: const BoxConstraints(maxWidth: kSmallScreenMaxWidth),
                   child: const EditNoteWidget(),
                 ),
               ),
