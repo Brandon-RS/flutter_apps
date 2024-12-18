@@ -44,9 +44,8 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
         listener: (context, state) {
           if (state.status.isSuccess) {
             _fieldState.currentState?.reset();
-            context
-              ..navigateTo(NoteDetailsRoute(id: state.note.id!))
-              ..read<EditNoteCubit>().reset();
+            context.navigateTo(NoteDetailsRoute(id: state.note.id!));
+            context.read<EditNoteCubit>().reset();
           }
         },
         child: Column(

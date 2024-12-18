@@ -45,7 +45,7 @@ class AppInputStyles {
   ) {
     return CheckboxThemeData(
       fillColor: WidgetStateProperty.resolveWith(
-        (Set<WidgetState> states) => states.isEmpty ? colors.onSurface.withOpacity(0.4) : null,
+        (Set<WidgetState> states) => states.isEmpty ? colors.onSurface.withValues(alpha: 0.4) : null,
       ),
     );
   }
@@ -55,7 +55,7 @@ class AppInputStyles {
   ) {
     return RadioThemeData(
       fillColor: WidgetStateProperty.resolveWith(
-        (Set<WidgetState> states) => states.isEmpty ? colors.onSurface.withOpacity(0.4) : null,
+        (Set<WidgetState> states) => states.isEmpty ? colors.onSurface.withValues(alpha: 0.4) : null,
       ),
     );
   }
@@ -65,7 +65,7 @@ class AppInputStyles {
   ) {
     return SwitchThemeData(
       thumbColor: WidgetStateProperty.resolveWith(
-        (Set<WidgetState> states) => states.isEmpty ? colors.onSurface.withOpacity(0.4) : null,
+        (Set<WidgetState> states) => states.isEmpty ? colors.onSurface.withValues(alpha: 0.4) : null,
       ),
     );
   }

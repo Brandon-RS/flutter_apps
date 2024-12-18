@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 
 class Flavor {
-  static final String _appFlavor = appFlavor ?? 'dev';
+  static const String _appFlavor = appFlavor ?? 'dev';
 
   String get name => appFlavor ?? 'dev';
 
