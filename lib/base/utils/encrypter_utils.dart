@@ -9,12 +9,24 @@ class EncrypterUtils {
   static final _fernet = Fernet(_b64key);
   static final _encrypter = Encrypter(_fernet);
 
-  static String encrypt(String value) => _encrypter.encrypt(value).base64;
+  static String? encrypt(String value) {
+    try {
+      return _encrypter.encrypt(value).base64;
+    } catch (_) {
+      return null;
+    }
+  }
 
-  static String decrypt(String value) => _encrypter.decrypt(Encrypted.fromBase64(value));
+  static String? decrypt(String value) {
+    try {
+      return _encrypter.decrypt(Encrypted.fromBase64(value));
+    } catch (_) {
+      return null;
+    }
+  }
 }
 
 extension EncrypterUtilsExtension on String {
-  String encrypt() => EncrypterUtils.encrypt(this);
-  String decrypt() => EncrypterUtils.decrypt(this);
+  String? encrypt() => EncrypterUtils.encrypt(this);
+  String? decrypt() => EncrypterUtils.decrypt(this);
 }
