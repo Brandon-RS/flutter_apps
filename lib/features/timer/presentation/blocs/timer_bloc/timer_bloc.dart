@@ -9,8 +9,8 @@ part 'timer_state.dart';
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
   TimerBloc({
-    final Ticker ticker = const Ticker(),
-    final int duration = 60,
+    Ticker ticker = const Ticker(),
+    int duration = 60,
   })  : _ticker = ticker,
         _duration = duration,
         super(TimerInitial(duration)) {

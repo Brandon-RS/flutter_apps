@@ -7,8 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 @RoutePage()
 class NoteDetailsPage extends StatelessWidget {
   const NoteDetailsPage({
-    super.key,
     @PathParam() required this.id,
+    super.key,
   });
 
   final String id;

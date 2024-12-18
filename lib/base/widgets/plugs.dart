@@ -29,15 +29,14 @@ class _WiredPlug extends StatelessWidget {
     const radius = Radius.circular(10);
 
     return LayoutBuilder(
-      builder: (final context, final constraints) {
+      builder: (context, constraints) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Expanded(child: _Box(topLeft: radius, bottomLeft: radius)),
             const _Box(topLeft: Radius.circular(6), bottomLeft: Radius.circular(6), width: 20, height: 20),
             const _Box(topLeft: radius, bottomLeft: radius, width: 40, height: 60),
-            const _Box(
-                topLeft: radius, bottomLeft: radius, bottomRight: radius, topRight: radius, width: 8, height: 80),
+            const _Box(topLeft: radius, bottomLeft: radius, bottomRight: radius, topRight: radius, width: 8, height: 80),
             if (main)
               const Column(
                 children: [

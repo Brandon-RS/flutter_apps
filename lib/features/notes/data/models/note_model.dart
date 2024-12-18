@@ -14,6 +14,13 @@ class NoteModel extends Equatable {
     this.updatedAt,
   });
 
+  const NoteModel.empty()
+      : id = null,
+        content = '',
+        createdAt = null,
+        updatedAt = null,
+        expiresAfter = 1;
+
   factory NoteModel.fromJson(Map<String, dynamic> json) => _$NoteModelFromJson(json);
 
   final String? id;
@@ -21,13 +28,6 @@ class NoteModel extends Equatable {
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final int expiresAfter;
-
-  const NoteModel.empty()
-      : id = null,
-        content = '',
-        createdAt = null,
-        updatedAt = null,
-        expiresAfter = 1;
 
   NoteModel copyWith({
     String? id,

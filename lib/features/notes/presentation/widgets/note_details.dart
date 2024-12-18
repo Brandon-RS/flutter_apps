@@ -12,8 +12,8 @@ import 'package:widgets_to_image/widgets_to_image.dart';
 
 class NoteDetails extends StatefulWidget {
   const NoteDetails({
-    super.key,
     required this.id,
+    super.key,
   });
 
   final String id;

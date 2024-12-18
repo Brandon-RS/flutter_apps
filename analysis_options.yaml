@@ -3,12 +3,22 @@ include: package:flutter_lints/flutter.yaml
 
 linter:
   rules:
-    prefer_single_quotes: true
-    flutter_style_todos: true
-    prefer_const_constructors: true
-    prefer_const_constructors_in_immutables: true
-    prefer_const_declarations: true
-    prefer_const_literals_to_create_immutables: true
+    - always_put_required_named_parameters_first
+    - avoid_final_parameters
+    - avoid_multiple_declarations_per_line
+    - cascade_invocations
+    - flutter_style_todos
+    - prefer_asserts_with_message
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_single_quotes
+    - prefer_spread_collections
+    - sort_constructors_first
+    - use_late_for_private_fields_and_variables
+    - use_named_constants
+    - use_string_buffers
 
 analyzer:
   errors:

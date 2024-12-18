@@ -2,7 +2,7 @@ import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 
 class AppButtonStyles {
-  static const _minSize = Size.square(.0);
+  static const _minSize = Size.zero;
   static const _shape = RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)));
   static const _padding = EdgeInsets.symmetric(horizontal: kPaddingHorizontal, vertical: kPaddingVertical);
 
