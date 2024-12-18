@@ -19,16 +19,15 @@ class EditNoteWidget extends StatefulWidget {
 
 class _EditNoteWidgetState extends State<EditNoteWidget> {
   late final GlobalKey<FormFieldState> _fieldState;
-  late final String? _content;
 
   @override
   void initState() {
     _fieldState = GlobalKey<FormFieldState>();
     final String? value = context.routeData.queryParams.get('content');
     if (value != null && value.trim().isNotEmpty) {
-      _content = value.replaceAll(' ', '+').decrypt();
-      context.read<EditNoteCubit>().changeNote(note: _content);
+      context.read<EditNoteCubit>().changeNote(note: value.replaceAll(' ', '+').decrypt());
     }
+
     super.initState();
   }
 
@@ -42,7 +41,7 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
   Widget build(BuildContext context) {
     return Center(
       child: BlocListener<EditNoteCubit, EditNoteState>(
-        listener: (context, state) async {
+        listener: (context, state) {
           if (state.status.isSuccess) {
             _fieldState.currentState?.reset();
             context
@@ -53,7 +52,7 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            NoteField(formKey: _fieldState, content: _content),
+            NoteField(formKey: _fieldState),
             const SizedBox(height: 20),
             const ExpirationTimeSelector(),
             const SizedBox(height: 20),
@@ -115,23 +114,20 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
 class NoteField extends StatelessWidget {
   const NoteField({
     required this.formKey,
-    this.content,
     super.key,
   });
 
   final GlobalKey<FormFieldState> formKey;
-  final String? content;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EditNoteCubit, EditNoteState>(
       builder: (context, state) => TextFormField(
         key: formKey,
-        initialValue: content,
+        initialValue: state.note.content,
         readOnly: state.status.isSubmitting,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        validator: (note) =>
-            !state.isNoteValid ? context.localizations.invalid_note_length(EditNoteState.maxLength) : null,
+        validator: (note) => !state.isNoteValid ? context.localizations.invalid_note_length(EditNoteState.maxLength) : null,
         minLines: 10,
         maxLines: 10,
         decoration: InputDecoration(
