@@ -25,7 +25,7 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
     _fieldState = GlobalKey<FormFieldState>();
     final String? value = context.routeData.queryParams.get('content');
     if (value != null && value.trim().isNotEmpty) {
-      context.read<EditNoteCubit>().changeNote(note: value.replaceAll(' ', '+').decrypt());
+      context.read<EditNoteCubit>().setInitialContent(value.replaceAll(' ', '+').decrypt());
     }
 
     super.initState();
@@ -87,9 +87,10 @@ class NoteField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EditNoteCubit, EditNoteState>(
+      buildWhen: (previous, current) => previous.isNoteValid != current.isNoteValid,
       builder: (context, state) => TextFormField(
         key: formKey,
-        initialValue: state.note.content,
+        initialValue: state.status.isInitial ? state.note.content : null,
         readOnly: state.status.isSubmitting,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (note) => !state.isNoteValid ? context.localizations.invalid_note_length(EditNoteState.maxLength) : null,

@@ -14,6 +14,8 @@ class EditNoteCubit extends Cubit<EditNoteState> {
 
   final NotesRepo _notesRepo = getIt<NotesRepo>();
 
+  void setInitialContent(String? content) => emit(state.copyWith(note: state.note.copyWith(content: content)));
+
   void changeNote({String? note, int? expiresAfter}) {
     emit(
       state.copyWith(
