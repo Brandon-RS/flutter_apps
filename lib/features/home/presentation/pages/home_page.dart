@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flit_notes/base/configs/flavors.dart';
 import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flit_notes/base/constants/constants.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/edit_note_cubit/edit_note_cubit.dart';
 import 'package:flit_notes/features/notes/presentation/widgets/edit_note_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,16 +38,16 @@ class _HomePageState extends State<HomePage> {
                   child: const EditNoteWidget(),
                 ),
               ),
-              // TODO(BRANDOM): Remove this button
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextButton(
-                  onPressed: () => context.router.push(
-                    NoteDetailsRoute(id: '321992b5-fe32-47f6-b458-2e184be6ea45'),
+              if (Flavor.isDev || kDebugMode)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    onPressed: () => context.router.push(
+                      NoteDetailsRoute(id: '321992b5-fe32-47f6-b458-2e184be6ea45'),
+                    ),
+                    child: const Text('Note-id'),
                   ),
-                  child: const Text('Note-id'),
                 ),
-              ),
             ],
           ),
         ),

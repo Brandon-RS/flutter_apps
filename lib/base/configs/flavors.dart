@@ -5,6 +5,8 @@ class Flavor {
 
   String get name => appFlavor ?? 'dev';
 
+  static bool get isDev => _appFlavor == 'dev';
+
   static String get title {
     switch (_appFlavor) {
       case 'dev':

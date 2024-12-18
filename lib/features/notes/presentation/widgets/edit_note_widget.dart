@@ -53,57 +53,22 @@ class _EditNoteWidgetState extends State<EditNoteWidget> {
           mainAxisSize: MainAxisSize.min,
           children: [
             NoteField(formKey: _fieldState),
+            const SizedBox(height: 10),
+            BlocBuilder<EditNoteCubit, EditNoteState>(
+              builder: (context, state) => Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  '${state.note.content.length}/${EditNoteState.maxLength}',
+                  style: context.textTheme.bodySmall,
+                ),
+              ),
+            ),
             const SizedBox(height: 20),
             const ExpirationTimeSelector(),
             const SizedBox(height: 20),
             const GenerateNoteButton(),
             const SizedBox(height: 20),
-            BlocBuilder<EditNoteCubit, EditNoteState>(
-              builder: (context, state) => state.isNoteValid
-                  ? RichText(
-                      text: TextSpan(
-                        text: context.localizations.or_you_can,
-                        style: context.textTheme.bodySmall,
-                        children: [
-                          TextSpan(
-                            text: context.localizations.continue_editing_later,
-                            style: context.textTheme.bodySmall?.copyWith(
-                              color: context.colors.onPrimaryFixed,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => Center(
-                                    child: ConstrainedBox(
-                                      constraints: const BoxConstraints(maxWidth: kSmallScreenMaxWidth),
-                                      child: AlertDialog(
-                                        title: Text(
-                                          context.localizations.save_your_draft,
-                                          style: context.textTheme.titleLarge,
-                                        ),
-                                        content: SelectableText(state.draftLink),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Clipboard.setData(ClipboardData(text: state.draftLink));
-                                              context.router.maybePop();
-                                            },
-                                            child: Text(context.localizations.copy_link),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                          ),
-                        ],
-                      ),
-                    )
-                  : const SizedBox(),
-            ),
+            const _SaveForLaterWidget(key: Key('save_for_later_widget')),
           ],
         ),
       ),
@@ -171,12 +136,65 @@ class GenerateNoteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO(BRANDOM): Adjust button size for bigger screens
     return BlocBuilder<EditNoteCubit, EditNoteState>(
       builder: (context, state) => FilledButton(
         onPressed: state.canSave ? () => context.read<EditNoteCubit>().saveNote() : null,
         child: Text(context.localizations.create_note),
       ),
+    );
+  }
+}
+
+class _SaveForLaterWidget extends StatelessWidget {
+  const _SaveForLaterWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<EditNoteCubit, EditNoteState>(
+      builder: (context, state) => state.isNoteValid
+          ? RichText(
+              text: TextSpan(
+                text: context.localizations.or_you_can,
+                style: context.textTheme.bodySmall,
+                children: [
+                  TextSpan(
+                    text: context.localizations.continue_editing_later,
+                    style: context.textTheme.bodySmall?.copyWith(
+                      color: context.colors.onPrimaryFixed,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => Center(
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: kSmallScreenMaxWidth),
+                              child: AlertDialog(
+                                title: Text(
+                                  context.localizations.save_your_draft,
+                                  style: context.textTheme.titleLarge,
+                                ),
+                                content: SelectableText(state.draftLink),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Clipboard.setData(ClipboardData(text: state.draftLink));
+                                      context.router.maybePop();
+                                    },
+                                    child: Text(context.localizations.copy_link),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                  ),
+                ],
+              ),
+            )
+          : const SizedBox(),
     );
   }
 }
