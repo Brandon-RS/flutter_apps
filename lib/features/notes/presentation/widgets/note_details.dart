@@ -4,7 +4,7 @@ import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/features/notes/presentation/blocs/note_details_cubit/note_details_cubit.dart';
 import 'package:flit_notes/features/timer/presentation/widgets/timer_text.dart';
-import 'package:flit_notes/gen/assets/assets.gen.dart';
+import 'package:flit_notes/gen/assets/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_flutter/qr_flutter.dart';

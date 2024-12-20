@@ -1,7 +1,7 @@
 import 'package:flit_notes/base/configs/env.dart';
 import 'package:flit_notes/base/di/di_entry_point.dart';
 import 'package:flit_notes/base/pages/app_page.dart';
-import 'package:flit_notes/gen/assets/assets.gen.dart';
+import 'package:flit_notes/gen/assets/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
