@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flit_notes/base/blocs/app_bloc/app_bloc.dart';
 import 'package:flit_notes/base/configs/flavors.dart';
 import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flit_notes/base/constants/constants.dart';
@@ -9,6 +10,7 @@ import 'package:flit_notes/features/notes/presentation/widgets/edit_note_widget.
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -48,6 +50,24 @@ class _HomePageState extends State<HomePage> {
                     child: const Text('Note-id'),
                   ),
                 ),
+              BlocBuilder<AppBloc, AppState>(
+                builder: (context, state) => DropdownButton<Locale>(
+                  borderRadius: BorderRadius.circular(kBorderRadius),
+                  underline: const SizedBox(),
+                  value: state.locale,
+                  onChanged: (Locale? locale) {
+                    context.read<AppBloc>().add(ChangeAppLocale(locale!));
+                  },
+                  items: AppLocalizations.supportedLocales
+                      .map(
+                        (locale) => DropdownMenuItem(
+                          value: locale,
+                          child: Text(locale.languageCode.toUpperCase()),
+                        ),
+                      )
+                      .toList(),
+                ),
+              )
             ],
           ),
         ),

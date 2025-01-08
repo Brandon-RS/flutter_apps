@@ -1,0 +1,42 @@
+{
+  "app_name": "Flit Notes",
+  "let_it_go": "Déjate llevar",
+  "create_note": "Crea una nota",
+  "invalid_note_length": "La longitud de la nota debe estar entre 1 y {count} caracteres.",
+  "@invalid_note_length": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "select_expiration_time": "Selecciona el tiempo de expiración",
+  "note_will_expire_in": "La note expirará un {hours, plural, =1 {1 hora} other {{hours} horas}}",
+  "@note_will_expire_in": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "error": "Error",
+  "ok": "OK",
+  "share": "Compartir",
+  "four_o_four": "404",
+  "page_not_found": "Pagina no encontrada",
+  "page_not_found_message": "Bueno, esto es incómodo. No pudimos encontrar la página que buscabas.",
+  "like_create_note": "¿Te gustaría crear una nota en su lugar?",
+  "go_for_it": "A por ello",
+  "or_you_can": "O puedes ",
+  "continue_editing_later": "continuar editando más tarde",
+  "save_your_draft": "Guardar tu borrador",
+  "copy_link": "Copiar enlace",
+  "seems_like_you_are_late": "Parece que llegaste tarde",
+  "note_has_expired": "Esta nota ya ha expirado, o puede que nunca haya existido para empezar. ¿Quién sabe?",
+  "go_back": "Volver",
+  "expires_in": "Expira en",
+  "new_note": "Nueva nota",
+  "sensitive_information_warning": "Esta aplicación no es un lugar seguro para almacenar información sensible. Por favor, no almacenes información sensible.",
+  "note_security_warning": "Todas las notas creadas con esta aplicación son anónimas y pueden ser vistas por cualquier persona que tenga acceso al código qr o url.",
+  "note_expiration_warning": "Por favor, ten en cuenta que cualquier nota creada con esta aplicación ya no será accesible después del número de horas especificado al crearla. Y se eliminará permanentemente después de 24 horas."
+}

@@ -34,7 +34,7 @@ class _AppPageState extends State<AppPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<AppBloc>().add(const AppIdChanged());
+      context.read<AppBloc>().add(const LoadAppData());
     });
   }
 
@@ -46,6 +46,7 @@ class _AppPageState extends State<AppPage> {
       darkTheme: AppTheme.dark,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      locale: context.watch<AppBloc>().state.locale,
       routerDelegate: Resources.I.appRouter.delegate(),
       routeInformationParser: Resources.I.appRouter.defaultRouteParser(),
     );

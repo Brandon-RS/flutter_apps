@@ -33,7 +33,7 @@
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="https" android:host="flit-notes.bruce.wtf" />
+        <data android:scheme="https" android:host="flit-notes.rojas.pub" />
       </intent-filter>
 
     </activity>
