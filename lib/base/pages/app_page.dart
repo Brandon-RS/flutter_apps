@@ -1,3 +1,4 @@
+import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/gen/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -21,14 +22,11 @@ class AppPage extends StatefulWidget {
 class _AppPageState extends State<AppPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flit Notes',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: Scaffold(
-        appBar: AppBar(title: Text('Flit Notes')),
-        body: Center(child: Text('Hello World')),
-      ),
+      routerConfig: AppRouter.to.config(),
     );
   }
 }
