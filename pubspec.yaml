@@ -13,6 +13,10 @@ dependencies:
 
   cupertino_icons: ^1.0.8
 
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -21,4 +25,5 @@ dev_dependencies:
   flutter_flavorizr: ^2.2.3
 
 flutter:
+  generate: true
   uses-material-design: true
