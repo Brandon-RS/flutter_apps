@@ -4,27 +4,27 @@ flavors:
       name: "Flit Notes Dev"
 
     android:
-      applicationId: "wtf.bruce.flitnotes.dev"
+      applicationId: "pub.brs.flitnotes.dev"
     ios:
-      bundleId: "wtf.bruce.flitnotes.dev"
+      bundleId: "pub.brs.flitnotes.dev"
     macos:
-      bundleId: "wtf.bruce.flitnotes.dev"
+      bundleId: "pub.brs.flitnotes.dev"
 
   prod:
     app:
       name: "Flit Notes"
 
     android:
-      applicationId: "wtf.bruce.flitnotes"
+      applicationId: "pub.brs.flitnotes"
     ios:
-      bundleId: "wtf.bruce.flitnotes"
+      bundleId: "pub.brs.flitnotes"
     macos:
-      bundleId: "wtf.bruce.flitnotes"
+      bundleId: "pub.brs.flitnotes"
 
 instructions:
   - assets:download
   - assets:extract
-  - android:buildGradle
+  # - android:buildGradle # Does not work because the file name is build.gradle.kts
   - android:androidManifest
   - android:dummyAssets
   - android:icons
@@ -34,12 +34,9 @@ instructions:
   - ios:plist
   - ios:icons
   - ios:dummyAssets
-  - macos:xcconfig
-  - macos:buildTargets
-  - macos:schema
-  - macos:plist
-  - macos:icons
-  - macos:dummyAssets
   - flutter:flavors
   - flutter:targets
   - assets:clean
+
+# Run the following command to generate the flavors:
+# dart run flutter_flavorizr

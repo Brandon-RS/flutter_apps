@@ -44,6 +44,11 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# FVM Version Cache
+.fvm/
+.fvmrc
+
+# Generated Files
 **/*.config.dart
 **/*.gr.dart
 **/*.g.dart
@@ -51,7 +56,3 @@ app.*.map.json
 **/env.*
 !**/env.example
 !**/env.dart
-
-# FVM Version Cache
-.fvm/
-.fvmrc
