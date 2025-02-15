@@ -6,6 +6,20 @@ plugins {
 }
 
 android {
+    flavorDimensions += "flit-notes-type"
+
+    productFlavors {
+        create("dev") {
+            dimension = "flit-notes-type"
+            resValue(type = "string", name = "app_name", value = "Flit Notes (Dev)")
+            applicationIdSuffix = ".dev"
+        }
+        create("prod") {
+            dimension = "flit-notes-type"
+            resValue(type = "string", name = "app_name", value = "Flit Notes")
+        }
+    }
+
     namespace = "pub.brs.flit_notes"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion

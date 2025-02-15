@@ -1,7 +1,7 @@
 flavors:
   dev:
     app:
-      name: "Flit Notes Dev"
+      name: "Flit Notes (Dev)"
 
     android:
       applicationId: "pub.brs.flitnotes.dev"
