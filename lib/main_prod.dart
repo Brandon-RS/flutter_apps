@@ -1,8 +1,6 @@
-import 'flavors.dart';
-
-import 'main.dart' as runner;
+import 'package:flit_notes/base/pages/app_page.dart';
+import 'package:flutter/material.dart';
 
 Future<void> main() async {
-  F.appFlavor = Flavor.prod;
-  await runner.main();
+  runApp(const AppPageProvider());
 }

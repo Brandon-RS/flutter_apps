@@ -1,0 +1,23 @@
+flutter_native_splash:
+  # Light theme
+  color: "#e5e5e5"
+  image: assets/branding/icon-dark.png
+
+  # Dark theme
+  color_dark: "#21252b"
+  image_dark: assets/branding/icon-light.png
+
+  branding_mode: bottom
+  branding_bottom_padding: 25
+
+  android_12:
+    # Light theme
+    color: "#e5e5e5"
+    image: assets/branding/icon-dark.png
+
+    # Dark theme
+    color_dark: "#21252b"
+    image_dark: assets/branding/icon-light.png
+
+# Run the following command to generate the splash screen:
+# dart run flutter_native_splash:create
