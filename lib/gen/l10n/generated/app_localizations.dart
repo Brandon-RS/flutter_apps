@@ -100,6 +100,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Flit Notes'**
   String get appName;
+
+  /// No description provided for @notes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get notes;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -10,4 +10,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get appName => 'Flit Notes';
+
+  @override
+  String get notes => 'Notas';
 }

@@ -5,13 +5,13 @@ import 'package:flit_notes/features/home/presentation/pages/home_page.dart';
 
 part 'app_router.gr.dart';
 
-final routerInstance = AppRouter();
+final appRouter = AppRouter();
 
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
   AppRouter();
 
-  static AppRouter get to => routerInstance;
+  static AppRouter get instance => appRouter;
 
   @override
   List<AutoRoute> get routes => [
