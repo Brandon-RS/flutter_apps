@@ -27,7 +27,7 @@ dependencies:
   # Data layer
   bloc: ^9.0.0
   flutter_bloc: ^9.0.0
-  flutter_secure_storage: ^9.2.4
+  shared_preferences: ^2.5.2
   flutter_dotenv: ^5.2.1
 
   # Presentation layer

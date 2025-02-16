@@ -1,4 +1,5 @@
 import 'package:flit_notes/base/blocs/app_bloc/app_bloc.dart';
+import 'package:flit_notes/base/constants/sdk_helpers.dart';
 import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/base/theme/app_theme.dart';
 import 'package:flit_notes/base/utils/flavors.dart';
@@ -42,6 +43,18 @@ class _AppPageState extends State<AppPage> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: appRouter.config(),
+      builder: (context, child) {
+        return BlocListener<AppBloc, AppState>(
+          listenWhen: (_, state) => !state.error.isUndefined,
+          listener: (context, state) {
+            // TODO(BRANDOM): Navigate to error page
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.error.toString())));
+          },
+          child: child,
+        );
+      },
     );
   }
 }

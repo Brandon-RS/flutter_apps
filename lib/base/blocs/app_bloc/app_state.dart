@@ -1,33 +1,44 @@
 part of 'app_bloc.dart';
 
 @immutable
-sealed class AppState extends Equatable {
-  const AppState({this.lang = AppLocale.enUS, this.theme = ThemeMode.system});
+class AppState extends Equatable {
+  const AppState._({
+    this.lang = AppLocale.enUS,
+    this.theme = ThemeMode.system,
+    this.error = undefined,
+    this.status = AppStateStatus.initial,
+  });
+
+  const AppState.initial() : this._();
+
+  const AppState.loaded({required AppLocale lang, required ThemeMode theme})
+    : this._(lang: lang, theme: theme, status: AppStateStatus.loaded);
 
   final AppLocale lang;
   final ThemeMode theme;
-
-  @override
-  List<Object> get props => [lang, theme];
-}
-
-final class AppInitial extends AppState {}
-
-final class AppLoading extends AppState {}
-
-final class AppLoaded extends AppState {
-  const AppLoaded({super.lang});
-}
-
-final class AppThemeChanged extends AppState {
-  const AppThemeChanged({super.theme});
-}
-
-final class AppError extends AppState {
-  const AppError({required this.error});
-
   final Object error;
+  final AppStateStatus status;
+
+  AppState copyWith({
+    AppLocale? lang,
+    ThemeMode? theme,
+    AppStateStatus? status,
+  }) => AppState._(
+    lang: lang ?? this.lang,
+    theme: theme ?? this.theme,
+    status: status ?? this.status,
+    error: undefined,
+  );
+
+  AppState setAppError(Object error) => AppState._(
+    lang: lang,
+    theme: theme,
+    error: error,
+    status: AppStateStatus.error,
+  );
 
   @override
-  List<Object> get props => [...super.props, error];
+  List<Object> get props => [lang, theme, status, error];
 }
+
+enum AppStateStatus { initial, loaded, error }
