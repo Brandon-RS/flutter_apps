@@ -1,5 +1,6 @@
 import 'package:flit_notes/base/blocs/app_bloc/app_bloc.dart';
 import 'package:flit_notes/base/router/app_router.dart';
+import 'package:flit_notes/base/utils/flavors.dart';
 import 'package:flit_notes/gen/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,7 @@ class _AppPageState extends State<AppPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flit Notes',
+      title: Flavor.title,
       locale: context.watch<AppBloc>().state.lang.asLocale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

@@ -21,13 +21,14 @@ dependencies:
   get_it: ^8.0.3
   injectable: ^2.5.0
 
-  # Router
+  # Routing
   auto_route: ^9.3.0+1
 
-  # State management
+  # Data layer
   bloc: ^9.0.0
   flutter_bloc: ^9.0.0
   flutter_secure_storage: ^9.2.4
+  flutter_dotenv: ^5.2.1
 
   # Helpers
   json_annotation: ^4.9.0
@@ -52,3 +53,7 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
+  assets:
+    - env/
+    - assets/
+    - assets/branding/

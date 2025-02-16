@@ -53,6 +53,6 @@ app.*.map.json
 **/*.gr.dart
 **/*.g.dart
 
-**/env.*
-!**/env.example
-!**/env.dart
+**/.env.*
+!**/.env.example
+!**/.env.dart
