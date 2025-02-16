@@ -14,6 +14,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc() : super(AppInitial()) {
     on<LoadAppData>(_onLoadAppData);
     on<ChangeLang>(_onChangeAppLang);
+    on<ChangeTheme>(_onChangeTheme);
   }
 
   Future<void> _onLoadAppData(LoadAppData event, Emitter<AppState> emit) async {
@@ -31,5 +32,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) async {
     final lang = await AppStorage.instance.saveLang(event.lang);
     emit(AppLoaded(lang: lang));
+  }
+
+  Future<void> _onChangeTheme(ChangeTheme event, Emitter<AppState> emit) async {
+    final theme = await AppStorage.instance.saveTheme(event.theme);
+    emit(AppThemeChanged(theme: theme));
   }
 }

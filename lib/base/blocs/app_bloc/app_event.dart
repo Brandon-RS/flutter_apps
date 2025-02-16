@@ -12,3 +12,9 @@ final class ChangeLang extends AppEvent {
 
   final AppLocale lang;
 }
+
+final class ChangeTheme extends AppEvent {
+  const ChangeTheme(this.theme);
+
+  final ThemeMode theme;
+}

@@ -1,5 +1,6 @@
 import 'package:flit_notes/base/enums/app_locales.dart';
 import 'package:flit_notes/base/enums/app_storage_keys.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AppStorage {
@@ -40,6 +41,19 @@ class AppStorage {
     return AppLocale.values.firstWhere(
       (e) => e.name == lang,
       orElse: () => AppLocale.enUS,
+    );
+  }
+
+  Future<ThemeMode> saveTheme(ThemeMode mode) async {
+    await write(AppKey.theme, mode.name);
+    return mode;
+  }
+
+  Future<ThemeMode> get theme async {
+    final theme = await read(AppKey.theme);
+    return ThemeMode.values.firstWhere(
+      (e) => e.name == theme,
+      orElse: () => ThemeMode.system,
     );
   }
 }

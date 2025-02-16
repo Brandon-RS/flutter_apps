@@ -1,1 +1,1 @@
-enum AppKey { lang }
+enum AppKey { lang, theme }

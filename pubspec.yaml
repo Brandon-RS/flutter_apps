@@ -30,6 +30,9 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   flutter_dotenv: ^5.2.1
 
+  # Presentation layer
+  google_fonts: ^6.2.1
+
   # Helpers
   json_annotation: ^4.9.0
   equatable: ^2.0.7

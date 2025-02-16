@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flit_notes/gen/l10n/generated/app_localizations.dart';
+import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -16,8 +16,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.appName)),
-      body: Center(child: Text(AppLocalizations.of(context)!.notes)),
+      appBar: AppBar(title: Text(context.localizations.appName)),
+      body: Center(child: Text(context.localizations.notes)),
     );
   }
 }

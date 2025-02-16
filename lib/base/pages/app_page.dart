@@ -1,5 +1,6 @@
 import 'package:flit_notes/base/blocs/app_bloc/app_bloc.dart';
 import 'package:flit_notes/base/router/app_router.dart';
+import 'package:flit_notes/base/theme/app_theme.dart';
 import 'package:flit_notes/base/utils/flavors.dart';
 import 'package:flit_notes/gen/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,9 @@ class _AppPageState extends State<AppPage> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: Flavor.title,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: context.watch<AppBloc>().state.theme,
       locale: context.watch<AppBloc>().state.lang.asLocale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
