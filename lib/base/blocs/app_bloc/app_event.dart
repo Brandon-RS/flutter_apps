@@ -19,6 +19,10 @@ final class ChangeTheme extends AppEvent {
   final ThemeMode theme;
 }
 
+final class ToggleAppTheme extends AppEvent {
+  const ToggleAppTheme();
+}
+
 final class OnAppError extends AppEvent {
   const OnAppError(this.error);
 

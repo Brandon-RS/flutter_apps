@@ -1,5 +1,5 @@
 import 'package:flit_notes/base/di/di_entry_point.dart';
-import 'package:flit_notes/base/pages/app_page.dart';
+import 'package:flit_notes/base/presentation/pages/app_page.dart';
 import 'package:flit_notes/base/utils/app_storage.dart';
 import 'package:flit_notes/base/utils/env.dart';
 import 'package:flutter/material.dart';

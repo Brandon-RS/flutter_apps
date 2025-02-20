@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flit_notes/base/extensions/context_ext.dart';
+import 'package:flit_notes/base/presentation/widgets/app_top_bar.dart';
+import 'package:flit_notes/features/home/presentation/widgets/notes_list.widget.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -16,8 +17,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(context.localizations.appName)),
-      body: Center(child: Text(context.localizations.notes)),
+      appBar: AppTopBar(),
+      body: ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        itemCount: 2,
+        itemBuilder: (context, index) => NotesList(),
+      ),
     );
   }
 }

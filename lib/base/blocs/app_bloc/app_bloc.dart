@@ -17,6 +17,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<LoadAppData>(_onLoadAppData);
     on<ChangeLang>(_onChangeAppLang);
     on<ChangeTheme>(_onChangeTheme);
+    on<ToggleAppTheme>(_onToggleAppTheme);
     on<OnAppError>(_onAppError);
   }
 
@@ -42,6 +43,15 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   Future<void> _onChangeTheme(ChangeTheme event, Emitter<AppState> emit) async {
     final theme = await AppStorage.instance.saveTheme(event.theme);
     emit(state.copyWith(theme: theme));
+  }
+
+  Future<void> _onToggleAppTheme(
+    ToggleAppTheme event,
+    Emitter<AppState> emit,
+  ) async {
+    final currentTheme = AppStorage.instance.theme;
+    final newTheme = currentTheme.isDark ? ThemeMode.light : ThemeMode.dark;
+    add(ChangeTheme(newTheme));
   }
 
   void _onAppError(OnAppError event, Emitter<AppState> emit) {

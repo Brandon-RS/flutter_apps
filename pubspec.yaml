@@ -29,6 +29,7 @@ dependencies:
   flutter_bloc: ^9.0.0
   shared_preferences: ^2.5.2
   flutter_dotenv: ^5.2.1
+  collection: ^1.19.1
 
   # Presentation layer
   google_fonts: ^6.2.1

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flit_notes/base/pages/app_layout_page.dart';
-import 'package:flit_notes/base/pages/unknown_page.dart';
+import 'package:flit_notes/base/presentation/pages/app_layout_page.dart';
+import 'package:flit_notes/base/presentation/pages/unknown_page.dart';
 import 'package:flit_notes/features/home/presentation/pages/home_page.dart';
 
 part 'app_router.gr.dart';

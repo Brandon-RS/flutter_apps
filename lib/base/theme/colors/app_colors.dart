@@ -45,7 +45,7 @@ class AppColors {
 
   // TODO(BRANDOM): Add dark color scheme
   static ColorScheme get dark => const ColorScheme.dark(
-    primary: Color(0xFFC3C3C3),
+    primary: Color(0xFF2c2c2e),
     onPrimary: Color(0xFF000000),
     primaryContainer: Color(0xFFDFE0FF),
     onPrimaryContainer: Color(0xFF000A63),
@@ -68,7 +68,7 @@ class AppColors {
     onError: Color(0xFFF4F4F4),
     errorContainer: Color(0xFFFFDAD5),
     onErrorContainer: Color(0xFF410001),
-    surface: Color(0xFF343334),
+    surface: Color(0xFF1f2123),
     surfaceContainer: Color(0xFFF5EFEF),
     surfaceContainerLowest: Color(0xFFFFFFFF),
     surfaceContainerLow: Color(0xFFF0F0F4),
