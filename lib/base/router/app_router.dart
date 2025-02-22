@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/presentation/pages/app_layout_page.dart';
+import 'package:flit_notes/base/presentation/pages/app_theme_test_page.dart';
 import 'package:flit_notes/base/presentation/pages/unknown_page.dart';
 import 'package:flit_notes/features/home/presentation/pages/home_page.dart';
 
@@ -21,6 +22,7 @@ class AppRouter extends RootStackRouter {
       path: AppLayoutPage.routePath,
       children: [AutoRoute(path: HomePage.routePath, page: HomeRoute.page)],
     ),
+    AutoRoute(path: AppThemeTestPage.routePath, page: AppThemeTestRoute.page),
     AutoRoute(path: UnknownPage.routePath, page: UnknownRoute.page),
   ];
 }

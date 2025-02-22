@@ -18,7 +18,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppTopBar(),
+      appBar: AppTopBar(
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () => context.navigateNamedTo('/app-theme-test'),
+        ),
+      ),
       body: ListView.builder(
         padding: const EdgeInsets.symmetric(
           vertical: kPaddingVertical,

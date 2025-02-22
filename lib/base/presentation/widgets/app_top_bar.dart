@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/blocs/app_bloc/app_bloc.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
     this.toolbarHeight,
     this.bottom,
     this.actions,
+    this.leading,
     super.key,
   }) : preferredSize = _PreferredTopBarSize(
          toolbarHeight,
@@ -20,11 +22,13 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
   @override
   final Size preferredSize;
+  final Widget? leading;
   final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: leading ?? AutoLeadingButton(),
       title: Text(title ?? context.localizations.appName),
       bottom: bottom,
       actions:

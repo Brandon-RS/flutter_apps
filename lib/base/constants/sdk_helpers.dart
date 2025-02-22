@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const undefined = Object();
 
 // TODO(BRANDOM): Extract this helpers to a more convenient place
@@ -13,4 +15,12 @@ extension BaseNullableObjectExt on Object? {
 
 extension BaseNumExt on num {
   Duration get asMilliseconds => Duration(milliseconds: toInt());
+}
+
+extension BasePaddingExt on Widget {
+  Widget addBottom(double value) =>
+      Padding(padding: EdgeInsets.only(bottom: value), child: this);
+
+  Widget addStart(double value) =>
+      Padding(padding: EdgeInsetsDirectional.only(start: value), child: this);
 }
