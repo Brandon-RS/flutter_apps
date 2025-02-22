@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 
 class AppButtonStyles {
   static const _minSize = Size.zero;
-  static const _shape = RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)));
-  static const _padding = EdgeInsets.symmetric(horizontal: kPaddingHorizontal, vertical: kPaddingVertical);
+  static const _shape = RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)),
+  );
+  static const _padding = EdgeInsets.symmetric(
+    horizontal: kPaddingHorizontal,
+    vertical: kPaddingVertical,
+  );
 
   static FilledButtonThemeData filledButtonThemeData(
     TextTheme textTheme,
@@ -27,14 +32,22 @@ class AppButtonStyles {
     ColorScheme colors,
   ) {
     return OutlinedButtonThemeData(
-      style: OutlinedButton.styleFrom(
-        padding: _padding,
-        minimumSize: _minSize,
-        foregroundColor: colors.primary,
-        disabledBackgroundColor: colors.outline,
-        disabledForegroundColor: colors.onSurface,
-        textStyle: textTheme.labelLarge,
-        shape: _shape,
+      style: ButtonStyle(
+        padding: WidgetStateProperty.all(_padding),
+        minimumSize: WidgetStateProperty.all(_minSize),
+        side: WidgetStateProperty.resolveWith((states) {
+          final isDisabled = states.contains(WidgetState.disabled);
+          return BorderSide(
+            color: isDisabled ? colors.outline : colors.onPrimary.withAlpha(90),
+            width: kBorderWidth,
+          );
+        }),
+        foregroundColor: WidgetStateProperty.resolveWith((states) {
+          final isDisabled = states.contains(WidgetState.disabled);
+          return isDisabled ? colors.outline : colors.onPrimary;
+        }),
+        textStyle: WidgetStateProperty.all(textTheme.labelLarge),
+        shape: WidgetStateProperty.all(_shape),
       ),
     );
   }
@@ -47,10 +60,7 @@ class AppButtonStyles {
       style: TextButton.styleFrom(
         padding: _padding,
         minimumSize: _minSize,
-        backgroundColor: Colors.transparent,
-        foregroundColor: colors.primary,
-        disabledBackgroundColor: colors.outline,
-        disabledForegroundColor: colors.onSurface,
+        foregroundColor: colors.onPrimary,
         textStyle: textTheme.labelLarge,
         shape: _shape,
       ),
@@ -68,7 +78,6 @@ class AppButtonStyles {
         foregroundColor: colors.onPrimary,
         textStyle: textTheme.labelLarge,
         shape: _shape,
-        side: BorderSide(color: colors.outline),
       ),
     );
   }
@@ -78,12 +87,9 @@ class AppButtonStyles {
   ) {
     return FloatingActionButtonThemeData(
       shape: const CircleBorder(),
-      iconSize: kIconSize,
-      backgroundColor: colors.primary,
-      foregroundColor: colors.onPrimary,
-      focusColor: colors.primary,
-      hoverColor: colors.primary,
-      splashColor: colors.primary,
+      iconSize: kIconSizeLarge,
+      backgroundColor: colors.primaryFixed,
+      foregroundColor: colors.onPrimaryFixed,
       elevation: kElevation,
     );
   }
@@ -101,21 +107,13 @@ class AppButtonStyles {
     );
   }
 
-  static IconButtonThemeData iconButtonThemeData(
-    ColorScheme colors,
-  ) {
+  static IconButtonThemeData iconButtonThemeData(ColorScheme colors) {
     return IconButtonThemeData(
-      style: ButtonStyle(iconSize: WidgetStateProperty.all(kIconSize)),
+      style: IconButton.styleFrom(iconSize: kIconSize),
     );
   }
 
-  static IconThemeData iconThemeData({
-    Color? color,
-    double size = kIconSize,
-  }) {
-    return IconThemeData(
-      color: color,
-      size: size,
-    );
+  static IconThemeData iconThemeData({Color? color, double size = kIconSize}) {
+    return IconThemeData(color: color, size: size);
   }
 }

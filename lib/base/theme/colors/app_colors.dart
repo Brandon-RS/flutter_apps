@@ -33,8 +33,8 @@ class AppColors {
     surfaceContainer: Color(0xFFE6E6E6),
     onSurface: black,
     onSurfaceVariant: black,
-    outline: Color(0xFFf4f4f4),
-    outlineVariant: Color(0xFFE6E6E6),
+    outline: Color(0xFFC3C3C3),
+    outlineVariant: Color(0xFFa5a4a5),
     scrim: Color(0xFF151515),
     shadow: Color(0xFF0B0A0A),
   );
@@ -65,7 +65,7 @@ class AppColors {
     onSurface: white,
     onSurfaceVariant: white,
     outline: Color(0xFF3c3c43),
-    outlineVariant: Color(0xFF2c2c2e),
+    outlineVariant: Color(0xFF7e7d80),
     scrim: Color(0xFF151515),
     shadow: Color(0xFF0B0A0A),
   );

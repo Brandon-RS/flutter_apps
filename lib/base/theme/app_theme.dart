@@ -18,50 +18,77 @@ class AppTheme {
       extensions: [AppColors.colorExt(base.brightness)],
 
       //* INPUTS *//
-      inputDecorationTheme: AppInputStyles.inputDecorationTheme(textTheme, colors),
+      inputDecorationTheme: AppInputStyles.inputDecorationTheme(
+        textTheme,
+        colors,
+      ),
       dropdownMenuTheme: AppInputStyles.dropdownMenuTheme(textTheme, colors),
       checkboxTheme: AppInputStyles.checkboxTheme(colors),
       radioTheme: AppInputStyles.radioTheme(colors),
       switchTheme: AppInputStyles.switchTheme(colors),
 
       //* Buttons *//
-      filledButtonTheme: AppButtonStyles.filledButtonThemeData(textTheme, colors),
-      outlinedButtonTheme: AppButtonStyles.outlinedButtonThemeData(textTheme, colors),
+      filledButtonTheme: AppButtonStyles.filledButtonThemeData(
+        textTheme,
+        colors,
+      ),
+      outlinedButtonTheme: AppButtonStyles.outlinedButtonThemeData(
+        textTheme,
+        colors,
+      ),
       textButtonTheme: AppButtonStyles.textButtonThemeData(textTheme, colors),
-      elevatedButtonTheme: AppButtonStyles.elevatedButtonThemeData(textTheme, colors),
+      elevatedButtonTheme: AppButtonStyles.elevatedButtonThemeData(
+        textTheme,
+        colors,
+      ),
       iconButtonTheme: AppButtonStyles.iconButtonThemeData(colors),
-      floatingActionButtonTheme: AppButtonStyles.floatingActionButtonThemeData(colors),
+      floatingActionButtonTheme: AppButtonStyles.floatingActionButtonThemeData(
+        colors,
+      ),
       menuButtonTheme: AppButtonStyles.menuButtonThemeData(textTheme, colors),
-
-      // * Dialogs * //
-      dialogBackgroundColor: colors.surface,
       dialogTheme: AppDialogStyles.dialogTheme(textTheme, colors),
       datePickerTheme: AppDialogStyles.datePickerThemeData(textTheme, colors),
 
       //* BARS *//
-      iconTheme: AppButtonStyles.iconThemeData(),
+      iconTheme: AppButtonStyles.iconThemeData(color: colors.outlineVariant),
       appBarTheme: AppBarTheme(
         backgroundColor: colors.surface,
         titleTextStyle: textTheme.headlineSmall,
-        actionsIconTheme: AppButtonStyles.iconThemeData(color: colors.onSurfaceVariant),
+        actionsIconTheme: AppButtonStyles.iconThemeData(
+          color: colors.onSurfaceVariant,
+        ),
       ),
 
       tabBarTheme: TabBarTheme(
         indicatorColor: colors.primary,
-        indicator: UnderlineTabIndicator(borderSide: BorderSide(color: colors.primary, width: kBorderWidth)),
+        indicator: UnderlineTabIndicator(
+          borderSide: BorderSide(color: colors.primary, width: kBorderWidth),
+        ),
         indicatorSize: TabBarIndicatorSize.tab,
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        selectedIconTheme: AppButtonStyles.iconThemeData(color: colors.primary, size: kIconSizeLarge),
-        unselectedIconTheme: AppButtonStyles.iconThemeData(color: colors.onSurfaceVariant, size: kIconSizeLarge),
+        selectedIconTheme: AppButtonStyles.iconThemeData(
+          color: colors.primary,
+          size: kIconSizeLarge,
+        ),
+        unselectedIconTheme: AppButtonStyles.iconThemeData(
+          color: colors.onSurfaceVariant,
+          size: kIconSizeLarge,
+        ),
         selectedLabelStyle: textTheme.labelMedium,
         unselectedLabelStyle: textTheme.labelMedium,
         selectedItemColor: colors.primary,
         unselectedItemColor: colors.onSurfaceVariant,
       ),
       navigationRailTheme: NavigationRailThemeData(
-        selectedIconTheme: AppButtonStyles.iconThemeData(color: colors.primary, size: kIconSizeLarge),
-        unselectedIconTheme: AppButtonStyles.iconThemeData(color: colors.onSurfaceVariant, size: kIconSizeLarge),
+        selectedIconTheme: AppButtonStyles.iconThemeData(
+          color: colors.primary,
+          size: kIconSizeLarge,
+        ),
+        unselectedIconTheme: AppButtonStyles.iconThemeData(
+          color: colors.onSurfaceVariant,
+          size: kIconSizeLarge,
+        ),
         selectedLabelTextStyle: textTheme.labelLarge,
         unselectedLabelTextStyle: textTheme.labelLarge,
         minWidth: 50,

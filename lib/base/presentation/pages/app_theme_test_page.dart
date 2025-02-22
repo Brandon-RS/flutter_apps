@@ -25,64 +25,121 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 12,
           children: [
-            FilledButton(onPressed: null, child: const Text('Disabled')),
-            FilledButton(onPressed: () {}, child: const Text('Filled Button')),
-            FilledButton.icon(
-              onPressed: () {},
-              icon: const Icon(Icons.add),
-              label: const Text('With Icon'),
+            Row(
+              spacing: 12,
+              children: [
+                FilledButton(onPressed: null, child: const Text('Disabled')),
+                FilledButton(
+                  onPressed: () {},
+                  child: const Text('Filled Button'),
+                ),
+                FilledButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(Icons.add),
+                  label: const Text('With Icon'),
+                ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Elevated Button'),
+            Row(
+              spacing: 12,
+              children: [
+                ElevatedButton(onPressed: null, child: const Text('Disabled')),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Elevated Button'),
+                ),
+              ],
             ),
-            OutlinedButton(
-              onPressed: () {},
-              child: const Text('Outlined Button'),
+            Row(
+              spacing: 12,
+              children: [
+                OutlinedButton(onPressed: null, child: const Text('Disabled')),
+                OutlinedButton(
+                  onPressed: () {},
+                  child: const Text('Outlined Button'),
+                ),
+              ],
             ),
-            TextButton(onPressed: () {}, child: const Text('Text Button')),
-            _SimpleBox(
-              text: 'Primary Container',
-              color: context.colors.primaryContainer,
+            Row(
+              spacing: 12,
+              children: [
+                TextButton(onPressed: null, child: const Text('Disabled')),
+                TextButton(onPressed: () {}, child: const Text('Text Button')),
+              ],
             ),
-            _SimpleBox(
-              text: 'Primary Fixed',
-              color: context.colors.primaryFixed,
-              textColor: context.colors.onPrimaryFixed,
+            Row(
+              spacing: 12,
+              children: [
+                IconButton(onPressed: null, icon: const Icon(Icons.add)),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+              ],
             ),
-            _SimpleBox(
-              text: 'Primary Fixed Dim',
-              color: context.colors.primaryFixedDim,
-              textColor: context.colors.onPrimaryFixedVariant,
+            Row(
+              spacing: 12,
+              children: icons.map((icon) => Icon(icon)).toList(),
             ),
-            _SimpleBox(text: 'Secondary', color: context.colors.secondary),
-            _SimpleBox(
-              text: 'Secondary Container',
-              color: context.colors.secondaryContainer,
+            Row(
+              spacing: 12,
+              children: [
+                _SimpleBox(
+                  text: 'Primary Container',
+                  color: context.colors.primaryContainer,
+                ),
+                _SimpleBox(
+                  text: 'Surface Container',
+                  color: context.colors.surfaceContainer,
+                ),
+                _SimpleBox(
+                  text: 'Tertiary',
+                  color: context.colors.tertiary,
+                  textColor: context.colors.onTertiary,
+                ),
+              ],
             ),
-            _SimpleBox(
-              text: 'Secondary Fixed',
-              color: context.colors.secondaryFixed,
-              textColor: context.colors.onSecondaryFixed,
+            Row(
+              spacing: 12,
+              children: [
+                _SimpleBox(
+                  text: 'Primary Fixed',
+                  color: context.colors.primaryFixed,
+                  textColor: context.colors.onPrimaryFixed,
+                ),
+                _SimpleBox(
+                  text: 'Primary Fixed Dim',
+                  color: context.colors.primaryFixedDim,
+                  textColor: context.colors.onPrimaryFixedVariant,
+                ),
+              ],
             ),
-            _SimpleBox(
-              text: 'Tertiary',
-              color: context.colors.tertiary,
-              textColor: context.colors.onTertiary,
+            Row(
+              spacing: 12,
+              children: [
+                _SimpleBox(text: 'Secondary', color: context.colors.secondary),
+                _SimpleBox(
+                  text: 'S Container',
+                  color: context.colors.secondaryContainer,
+                ),
+                _SimpleBox(
+                  text: 'S Fixed',
+                  color: context.colors.secondaryFixed,
+                  textColor: context.colors.onSecondaryFixed,
+                ),
+              ],
             ),
-            _SimpleBox(
-              text: 'Error',
-              color: context.colors.error,
-              textColor: context.colors.onError,
-            ),
-            _SimpleBox(
-              text: 'Error Container',
-              color: context.colors.errorContainer,
-              textColor: context.colors.onErrorContainer,
-            ),
-            _SimpleBox(
-              text: 'Surface Container',
-              color: context.colors.surfaceContainer,
+            Row(
+              spacing: 12,
+              children: [
+                _SimpleBox(
+                  text: 'Error',
+                  color: context.colors.error,
+                  textColor: context.colors.onError,
+                ),
+                _SimpleBox(
+                  text: 'Error Container',
+                  color: context.colors.errorContainer,
+                  textColor: context.colors.onErrorContainer,
+                ),
+              ],
             ),
             Row(
               children: [
@@ -90,16 +147,20 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
                 Switch(value: false, onChanged: (val) {}),
               ],
             ),
-            const Divider(),
             Row(
               children: [
                 Checkbox(value: true, onChanged: (val) {}),
                 Checkbox(value: false, onChanged: (val) {}),
               ],
             ),
+            const Divider(),
             ...texts,
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -121,6 +182,16 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
     Text('Label Medium', style: context.textTheme.labelMedium),
     Text('Label Small', style: context.textTheme.labelSmall),
   ];
+
+  List<IconData> get icons => [
+    Icons.add,
+    Icons.search,
+    Icons.menu,
+    Icons.more_vert,
+    Icons.more_horiz,
+    Icons.arrow_back,
+    Icons.arrow_forward,
+  ];
 }
 
 class _SimpleBox extends StatelessWidget {
@@ -138,12 +209,11 @@ class _SimpleBox extends StatelessWidget {
         color: color,
       ),
       alignment: AlignmentDirectional.centerStart,
-      width: 200,
       height: 40.0,
       child: Text(
         text,
         style: context.textTheme.bodyMedium?.copyWith(color: textColor),
-      ).addStart(15),
+      ).addHorizontal(15),
     );
   }
 }
