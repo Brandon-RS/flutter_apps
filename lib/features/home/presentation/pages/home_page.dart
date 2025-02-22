@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flit_notes/base/presentation/widgets/app_top_bar.dart';
-import 'package:flit_notes/features/home/presentation/widgets/notes_list.widget.dart';
+import 'package:flit_notes/features/notes/presentation/widgets/notes_collection.widget.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -19,9 +20,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppTopBar(),
       body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: const EdgeInsets.symmetric(
+          vertical: kPaddingVertical,
+          horizontal: kPaddingHorizontal,
+        ),
         itemCount: 2,
-        itemBuilder: (context, index) => NotesList(),
+        itemBuilder: (context, index) => NotesCollection(),
       ),
     );
   }

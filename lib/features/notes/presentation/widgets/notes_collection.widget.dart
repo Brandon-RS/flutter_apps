@@ -2,25 +2,29 @@ import 'package:collection/collection.dart';
 import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flit_notes/base/constants/sdk_helpers.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
-import 'package:flit_notes/features/home/data/dummy/dummy_notes.dart';
-import 'package:flit_notes/features/home/data/models/note_model.dart';
+import 'package:flit_notes/features/notes/data/dummy/dummy_notes.dart';
+import 'package:flit_notes/features/notes/data/models/note_model.dart';
 import 'package:flutter/material.dart';
 
-class NotesList extends StatelessWidget {
-  const NotesList({super.key});
+class NotesCollection extends StatelessWidget {
+  const NotesCollection({this.title, super.key});
+
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
-          children: [
-            Text('Some title here'),
-            const Spacer(),
-            IconButton(icon: Icon(Icons.edit), onPressed: () {}),
-          ],
-        ),
+        if (title.isNotNull)
+          Row(
+            children: [
+              Text(title!, style: context.textTheme.titleLarge),
+              const Spacer(),
+              IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+            ],
+          ),
+
         Container(
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
@@ -42,6 +46,8 @@ class NotesList extends StatelessWidget {
             ],
           ),
         ),
+
+        if (title.isNull) const SizedBox(height: 20),
       ],
     );
   }

@@ -1,5 +1,5 @@
 // TODO(BRANDOM): Remove this file when done
-import 'package:flit_notes/features/home/data/models/note_model.dart';
+import 'package:flit_notes/features/notes/data/models/note_model.dart';
 
 const recentDummyNotes = [
   NoteModel(
