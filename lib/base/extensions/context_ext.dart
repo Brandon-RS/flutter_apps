@@ -43,4 +43,6 @@ extension ContextExt on BuildContext {
   bool get isLandscapeSmall => isLandscape && isSmallScreen;
   bool get isLandscapeMedium => isLandscape && isMediumScreen;
   bool get isLandscapeLarge => isLandscape && isLargeScreen;
+
+  void hideKeyboard() => FocusScope.of(this).unfocus();
 }

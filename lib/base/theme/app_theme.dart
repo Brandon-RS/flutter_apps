@@ -1,6 +1,7 @@
 import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flit_notes/base/theme/colors/app_colors.dart';
 import 'package:flit_notes/base/theme/styles/styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -22,7 +23,10 @@ class AppTheme {
         textTheme,
         colors,
       ),
-      dropdownMenuTheme: AppInputStyles.dropdownMenuTheme(textTheme, colors),
+      cupertinoOverrideTheme: CupertinoThemeData(
+        primaryColor: colors.primaryFixed,
+      ),
+      textSelectionTheme: AppInputStyles.textSelectionTheme(colors),
       checkboxTheme: AppInputStyles.checkboxTheme(colors),
       radioTheme: AppInputStyles.radioTheme(colors),
       switchTheme: AppInputStyles.switchTheme(colors),

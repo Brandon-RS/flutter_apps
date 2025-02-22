@@ -8,21 +8,21 @@ class AppTextStyles {
     // Styles according to Material Design 3 Typography
     return baseTheme.copyWith(
       displayLarge: baseTheme.displayLarge?.copyWith(
-        color: colors.primary,
+        color: colors.onPrimary,
         fontSize: 54,
         fontWeight: FontWeight.w400,
         height: 1.2,
         letterSpacing: -.25,
       ),
       displayMedium: baseTheme.displayMedium?.copyWith(
-        color: colors.primary,
+        color: colors.onPrimary,
         fontSize: 45,
         fontWeight: FontWeight.w400,
         height: 1.15,
         letterSpacing: .0,
       ),
       displaySmall: baseTheme.displaySmall?.copyWith(
-        color: colors.primary,
+        color: colors.onPrimary,
         fontSize: 36,
         fontWeight: FontWeight.w400,
         height: 1.2,

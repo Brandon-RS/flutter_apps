@@ -145,14 +145,33 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
               children: [
                 Switch(value: true, onChanged: (val) {}),
                 Switch(value: false, onChanged: (val) {}),
-              ],
-            ),
-            Row(
-              children: [
                 Checkbox(value: true, onChanged: (val) {}),
                 Checkbox(value: false, onChanged: (val) {}),
+                Radio(value: true, groupValue: true, onChanged: (val) {}),
+                Radio(value: false, groupValue: true, onChanged: (val) {}),
               ],
             ),
+            Center(
+              child: DropdownButton(
+                hint: const Text('Select an item'),
+                value: 2,
+                items: [
+                  DropdownMenuItem(value: 1, child: Text('Some value')),
+                  DropdownMenuItem(value: 2, child: Text('Another value')),
+                  DropdownMenuItem(value: 3, child: Text('The last one')),
+                ],
+                onChanged: (val) {},
+              ),
+            ),
+            TextField(
+              enabled: false,
+              decoration: const InputDecoration(hintText: 'Disabled'),
+            ),
+            TextField(
+              decoration: const InputDecoration(hintText: 'Enabled'),
+              onTapOutside: (_) => context.hideKeyboard(),
+            ),
+            SelectableText('Selectable Text'),
             const Divider(),
             ...texts,
           ],

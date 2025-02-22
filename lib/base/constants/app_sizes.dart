@@ -1,6 +1,6 @@
 const kElevation = 2.0;
 
-const kBorderWidth = 1.2;
+const kBorderWidth = 1.6;
 const kBorderRadius = 8.0;
 const kBorderRadiusLarge = 16.0;
 
