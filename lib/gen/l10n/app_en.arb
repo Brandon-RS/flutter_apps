@@ -1,4 +1,7 @@
 {
   "appName": "Flit Notes",
-  "notes": "Notes"
+  "notes": "Notes",
+  "home": "Home",
+  "quickFind": "Quick Find",
+  "settings": "Settings"
 }

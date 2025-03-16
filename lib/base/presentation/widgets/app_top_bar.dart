@@ -29,7 +29,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: leading ?? const AutoLeadingButton(),
-      title: Text(title ?? context.localizations.appName),
+      title: Text(title ?? context.tr.appName),
       bottom: bottom,
       actions:
           actions ??

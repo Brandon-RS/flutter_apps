@@ -13,4 +13,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get notes => 'Notas';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get quickFind => 'Quick Find';
+
+  @override
+  String get settings => 'Settings';
 }

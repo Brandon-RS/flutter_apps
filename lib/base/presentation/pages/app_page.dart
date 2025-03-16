@@ -1,4 +1,5 @@
 import 'package:flit_notes/base/blocs/app_bloc/app_bloc.dart';
+import 'package:flit_notes/base/blocs/app_bottom_bar_cubit/app_bottom_bar_cubit.dart';
 import 'package:flit_notes/base/constants/sdk_helpers.dart';
 import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/base/theme/app_theme.dart';
@@ -17,6 +18,9 @@ class AppPageProvider extends StatelessWidget {
       providers: [
         BlocProvider<AppBloc>(
           create: (_) => GetIt.I<AppBloc>()..add(LoadAppData()),
+        ),
+        BlocProvider<AppBottomBarCubit>(
+          create: (_) => GetIt.I<AppBottomBarCubit>(),
         ),
       ],
       child: const AppPage(),

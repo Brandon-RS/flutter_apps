@@ -5,7 +5,7 @@ import 'package:flit_notes/gen/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 extension ContextExt on BuildContext {
-  AppLocalizations get localizations => AppLocalizations.of(this)!;
+  AppLocalizations get tr => AppLocalizations.of(this)!;
 
   ThemeData get theme => Theme.of(this);
   TextTheme get textTheme => theme.textTheme;

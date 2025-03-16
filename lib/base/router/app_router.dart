@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/presentation/pages/app_layout_page.dart';
 import 'package:flit_notes/base/presentation/pages/app_theme_test_page.dart';
 import 'package:flit_notes/base/presentation/pages/unknown_page.dart';
-import 'package:flit_notes/features/home/presentation/pages/home_page.dart';
+import 'package:flit_notes/features/library/presentation/pages/library_page.dart';
+import 'package:flit_notes/features/quick_find/presentation/pages/quick_find_page.dart';
+import 'package:flit_notes/features/settings/presentation/pages/settings_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -20,7 +22,11 @@ class AppRouter extends RootStackRouter {
       initial: true,
       page: AppLayoutRoute.page,
       path: AppLayoutPage.routePath,
-      children: [AutoRoute(path: HomePage.routePath, page: HomeRoute.page)],
+      children: [
+        AutoRoute(path: LibraryPage.routePath, page: LibraryRoute.page),
+        AutoRoute(path: QuickFindPage.routePath, page: QuickFindRoute.page),
+        AutoRoute(path: SettingsPage.routePath, page: SettingsRoute.page),
+      ],
     ),
     AutoRoute(path: AppThemeTestPage.routePath, page: AppThemeTestRoute.page),
     AutoRoute(path: UnknownPage.routePath, page: UnknownRoute.page),
