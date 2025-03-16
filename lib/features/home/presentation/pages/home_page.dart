@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppTopBar(
         leading: IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () => context.navigateNamedTo('/app-theme-test'),
+          onPressed: () => context.navigateToPath('/app-theme-test'),
         ),
       ),
       body: ListView.builder(
