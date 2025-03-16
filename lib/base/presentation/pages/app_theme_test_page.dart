@@ -28,7 +28,7 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
             Row(
               spacing: 12,
               children: [
-                FilledButton(onPressed: null, child: const Text('Disabled')),
+                const FilledButton(onPressed: null, child: Text('Disabled')),
                 FilledButton(
                   onPressed: () {},
                   child: const Text('Filled Button'),
@@ -43,7 +43,7 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
             Row(
               spacing: 12,
               children: [
-                ElevatedButton(onPressed: null, child: const Text('Disabled')),
+                const ElevatedButton(onPressed: null, child: Text('Disabled')),
                 ElevatedButton(
                   onPressed: () {},
                   child: const Text('Elevated Button'),
@@ -53,7 +53,7 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
             Row(
               spacing: 12,
               children: [
-                OutlinedButton(onPressed: null, child: const Text('Disabled')),
+                const OutlinedButton(onPressed: null, child: Text('Disabled')),
                 OutlinedButton(
                   onPressed: () {},
                   child: const Text('Outlined Button'),
@@ -63,14 +63,14 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
             Row(
               spacing: 12,
               children: [
-                TextButton(onPressed: null, child: const Text('Disabled')),
+                const TextButton(onPressed: null, child: Text('Disabled')),
                 TextButton(onPressed: () {}, child: const Text('Text Button')),
               ],
             ),
             Row(
               spacing: 12,
               children: [
-                IconButton(onPressed: null, icon: const Icon(Icons.add)),
+                const IconButton(onPressed: null, icon: Icon(Icons.add)),
                 IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
               ],
             ),
@@ -155,7 +155,7 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
               child: DropdownButton(
                 hint: const Text('Select an item'),
                 value: 2,
-                items: [
+                items: const [
                   DropdownMenuItem(value: 1, child: Text('Some value')),
                   DropdownMenuItem(value: 2, child: Text('Another value')),
                   DropdownMenuItem(value: 3, child: Text('The last one')),
@@ -163,15 +163,15 @@ class _AppThemeTestPageState extends State<AppThemeTestPage> {
                 onChanged: (val) {},
               ),
             ),
-            TextField(
+            const TextField(
               enabled: false,
-              decoration: const InputDecoration(hintText: 'Disabled'),
+              decoration: InputDecoration(hintText: 'Disabled'),
             ),
             TextField(
               decoration: const InputDecoration(hintText: 'Enabled'),
               onTapOutside: (_) => context.hideKeyboard(),
             ),
-            SelectableText('Selectable Text'),
+            const SelectableText('Selectable Text'),
             const Divider(),
             ...texts,
           ],

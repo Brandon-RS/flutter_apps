@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           horizontal: kPaddingHorizontal,
         ),
         itemCount: 2,
-        itemBuilder: (context, index) => NotesCollection(),
+        itemBuilder: (context, index) => const NotesCollection(),
       ),
     );
   }

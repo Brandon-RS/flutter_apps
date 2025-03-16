@@ -28,15 +28,16 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: leading ?? AutoLeadingButton(),
+      leading: leading ?? const AutoLeadingButton(),
       title: Text(title ?? context.localizations.appName),
       bottom: bottom,
       actions:
           actions ??
           [
             IconButton(
-              icon: Icon(Icons.brightness_4),
-              onPressed: () => context.read<AppBloc>().add(ToggleAppTheme()),
+              icon: const Icon(Icons.brightness_4),
+              onPressed:
+                  () => context.read<AppBloc>().add(const ToggleAppTheme()),
             ),
           ],
     );

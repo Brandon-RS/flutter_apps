@@ -21,7 +21,7 @@ class NotesCollection extends StatelessWidget {
             children: [
               Text(title!, style: context.textTheme.titleLarge),
               const Spacer(),
-              IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+              IconButton(icon: const Icon(Icons.edit), onPressed: () {}),
             ],
           ),
 

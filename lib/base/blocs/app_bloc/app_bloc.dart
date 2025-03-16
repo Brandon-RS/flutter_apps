@@ -13,7 +13,7 @@ part 'app_state.dart';
 
 @singleton
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc() : super(AppState.initial()) {
+  AppBloc() : super(const AppState.initial()) {
     on<LoadAppData>(_onLoadAppData);
     on<ChangeLang>(_onChangeAppLang);
     on<ChangeTheme>(_onChangeTheme);
