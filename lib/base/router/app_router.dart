@@ -23,9 +23,21 @@ class AppRouter extends RootStackRouter {
       page: AppLayoutRoute.page,
       path: AppLayoutPage.routePath,
       children: [
-        AutoRoute(path: LibraryPage.routePath, page: LibraryRoute.page),
-        AutoRoute(path: QuickFindPage.routePath, page: QuickFindRoute.page),
-        AutoRoute(path: SettingsPage.routePath, page: SettingsRoute.page),
+        CustomRoute(
+          path: LibraryPage.routePath,
+          page: LibraryRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideLeft,
+        ),
+        CustomRoute(
+          path: QuickFindPage.routePath,
+          page: QuickFindRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideLeft,
+        ),
+        CustomRoute(
+          path: SettingsPage.routePath,
+          page: SettingsRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideLeft,
+        ),
       ],
     ),
     AutoRoute(path: AppThemeTestPage.routePath, page: AppThemeTestRoute.page),

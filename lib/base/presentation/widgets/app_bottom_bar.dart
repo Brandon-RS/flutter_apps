@@ -10,6 +10,7 @@ class AppBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      color: context.colors.primary,
       padding: EdgeInsets.zero,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -54,7 +55,7 @@ class _BottomAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(12),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: BlocBuilder<AppBottomBarCubit, AppBottomBarState>(
@@ -62,7 +63,7 @@ class _BottomAction extends StatelessWidget {
             final color =
                 index == state.currentIndex
                     ? context.colors.primaryFixed
-                    : null;
+                    : context.colors.outlineVariant;
 
             return Column(
               mainAxisSize: MainAxisSize.min,
