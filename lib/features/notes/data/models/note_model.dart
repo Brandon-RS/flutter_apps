@@ -6,23 +6,27 @@ part 'note_model.g.dart';
 class NoteModel {
   const NoteModel({
     required this.id,
-    required this.title,
-    required this.iconEmoji,
+    required this.name,
+    required this.icon,
     required this.content,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
-  factory NoteModel.fromJson(Map<String, dynamic> json) =>
+  factory NoteModel.fromMap(Map<String, dynamic> json) =>
       _$NoteModelFromJson(json);
 
   final String id;
-  final String title;
-  final String iconEmoji;
+  final String name;
+  final String icon;
   final String content;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
-  Map<String, dynamic> toJson() => _$NoteModelToJson(this);
+  Map<String, dynamic> toMap() => _$NoteModelToJson(this);
 
   @override
   String toString() {
-    return 'NoteModel{id: $id, title: $title, iconEmoji: $iconEmoji, content: $content}';
+    return 'Note{id: $id, name: $name, icon: $icon, content: $content, createdAt: $createdAt, updatedAt: $updatedAt}';
   }
 }

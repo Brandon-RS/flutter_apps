@@ -38,7 +38,7 @@ class NotesCollection extends StatelessWidget {
                 (index, note) => NoteListItem(
                   note: note,
                   onNoteTap: (note) {
-                    print('❌ ${note.iconEmoji}');
+                    print('❌ ${note.name}');
                   },
                   showBottomBorder: index != recentDummyNotes.length - 1,
                 ),
@@ -75,7 +75,7 @@ class NoteListItem extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Text(note.iconEmoji, style: context.textTheme.titleLarge),
+          child: Text(note.icon, style: context.textTheme.titleLarge),
         ),
         Expanded(
           child: DecoratedBox(
@@ -83,7 +83,7 @@ class NoteListItem extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
-                note.title,
+                note.name,
                 style: context.textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),

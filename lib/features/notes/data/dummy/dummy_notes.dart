@@ -1,35 +1,45 @@
 // TODO(BRANDOM): Remove this file when done
 import 'package:flit_notes/features/notes/data/models/note_model.dart';
 
-const recentDummyNotes = [
+final recentDummyNotes = [
   NoteModel(
     id: 'aoeu-aoeu-aoeu-aoeu',
-    title: 'Some title 1',
-    iconEmoji: '📝',
+    name: 'Some title 1',
+    icon: '📝',
     content: 'Some content 1',
+    createdAt: DateTime.now().subtract(const Duration(days: 1)),
+    updatedAt: DateTime.now().subtract(const Duration(days: 1)),
   ),
   NoteModel(
     id: 'aoeu-aoeu-aoeu-aoeu',
-    title: 'Some title 2',
-    iconEmoji: '⭐',
+    name: 'Some title 2',
+    icon: '⭐',
     content: 'Some content 2',
+    createdAt: DateTime.now().subtract(const Duration(days: 1)),
+    updatedAt: DateTime.now().subtract(const Duration(days: 1)),
   ),
   NoteModel(
     id: 'aoeu-aoeu-aoeu-aoeu',
-    title: 'Some title 3',
-    iconEmoji: '📦',
+    name: 'Some title 3',
+    icon: '📦',
     content: 'Some content 3',
+    createdAt: DateTime.now().subtract(const Duration(days: 1)),
+    updatedAt: DateTime.now().subtract(const Duration(days: 1)),
   ),
   NoteModel(
     id: 'aoeu-aoeu-aoeu-aoeu',
-    title: 'Some title 4',
-    iconEmoji: '🔥',
+    name: 'Some title 4',
+    icon: '🔥',
     content: 'Some content 4',
+    createdAt: DateTime.now().subtract(const Duration(days: 1)),
+    updatedAt: DateTime.now().subtract(const Duration(days: 1)),
   ),
   NoteModel(
     id: 'aoeu-aoeu-aoeu-aoeu',
-    title: 'Some title 5',
-    iconEmoji: '🎯',
+    name: 'Some title 5',
+    icon: '🎯',
     content: 'Some content 5',
+    createdAt: DateTime.now().subtract(const Duration(days: 1)),
+    updatedAt: DateTime.now().subtract(const Duration(days: 1)),
   ),
 ];
