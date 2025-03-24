@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flit_notes/base/constants/sdk_helpers.dart';
 import 'package:flit_notes/base/enums/app_locales.dart';
 import 'package:flit_notes/base/extensions/app_storage_ext.dart';
-import 'package:flit_notes/base/utils/app_storage.dart';
+import 'package:flit_notes/base/storage/app_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:injectable/injectable.dart';

@@ -1,6 +1,6 @@
 import 'package:flit_notes/base/enums/app_locales.dart';
 import 'package:flit_notes/base/enums/app_storage_keys.dart';
-import 'package:flit_notes/base/utils/app_storage.dart';
+import 'package:flit_notes/base/storage/app_storage.dart';
 import 'package:flutter/material.dart';
 
 extension AppStorageExt on AppStorage {

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 const undefined = Object();
+
+const uuid = Uuid();
 
 // TODO(BRANDOM): Extract this helpers to a more convenient place
 extension BaseObjectExt on Object {

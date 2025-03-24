@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class Env {
   static final String baseUrl = _tryGet<String>('BASE_URL');
   static final String webUrl = _tryGet<String>('WEB_URL');
+  static final String dbName = _tryGet<String>('DB_NAME');
 
   /// Load environment variables from [Flavor.envFilePath]
   static Future<void> init() async {
