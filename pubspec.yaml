@@ -5,7 +5,8 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.7.2
+  flutter: ^3.29.2
 
 dependencies:
   cupertino_icons: ^1.0.8
@@ -30,7 +31,6 @@ dependencies:
   shared_preferences: ^2.5.2
   flutter_dotenv: ^5.2.1
   collection: ^1.19.1
-  uuid: ^4.5.1
   path: ^1.9.1
   sqflite: ^2.4.2
 
@@ -40,6 +40,7 @@ dependencies:
   # Helpers
   json_annotation: ^4.9.0
   equatable: ^2.0.7
+  sdk_helpers: ^0.0.1
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,10 @@ dev_dependencies:
   # Testing
   test: ^1.25.15
   bloc_test: ^10.0.0
+
+dependency_overrides:
+  sdk_helpers:
+    path: packages/sdk_helpers
 
 flutter:
   generate: true

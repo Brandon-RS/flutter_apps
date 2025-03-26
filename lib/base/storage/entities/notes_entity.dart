@@ -1,10 +1,10 @@
 import 'dart:developer';
 
-import 'package:flit_notes/base/constants/sdk_helpers.dart';
 import 'package:flit_notes/base/storage/entities/entity.dart';
 import 'package:flit_notes/features/library/data/dtos/create_note_dto.dart';
 import 'package:flit_notes/features/library/data/dtos/update_note_dto.dart';
 import 'package:flit_notes/features/notes/data/models/note_model.dart';
+import 'package:sdk_helpers/sdk_helpers.dart';
 import 'package:sqflite/sqflite.dart';
 
 class NotesEntity extends Entity<NoteModel> {

@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flit_notes/base/constants/sdk_helpers.dart';
 import 'package:flit_notes/base/enums/app_locales.dart';
 import 'package:flit_notes/base/extensions/app_storage_ext.dart';
 import 'package:flit_notes/base/storage/app_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sdk_helpers/sdk_helpers.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';

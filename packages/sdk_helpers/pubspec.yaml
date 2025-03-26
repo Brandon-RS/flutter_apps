@@ -1,0 +1,22 @@
+name: sdk_helpers
+description: "SDK helpers"
+version: 0.0.1
+
+environment:
+  sdk: ^3.7.2
+  flutter: ^3.29.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  uuid: ^4.5.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true

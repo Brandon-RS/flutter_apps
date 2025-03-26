@@ -1,6 +1,5 @@
 import 'package:flit_notes/base/blocs/app_bloc/app_bloc.dart';
 import 'package:flit_notes/base/blocs/app_bottom_bar_cubit/app_bottom_bar_cubit.dart';
-import 'package:flit_notes/base/constants/sdk_helpers.dart';
 import 'package:flit_notes/base/router/app_router.dart';
 import 'package:flit_notes/base/theme/app_theme.dart';
 import 'package:flit_notes/base/utils/flavors.dart';
@@ -8,6 +7,7 @@ import 'package:flit_notes/gen/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:sdk_helpers/sdk_helpers.dart';
 
 class AppPageProvider extends StatelessWidget {
   const AppPageProvider({super.key});

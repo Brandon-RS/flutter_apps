@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:collection/collection.dart';
 import 'package:flit_notes/base/constants/app_sizes.dart';
-import 'package:flit_notes/base/constants/sdk_helpers.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
 import 'package:flit_notes/features/notes/data/dummy/dummy_notes.dart';
 import 'package:flit_notes/features/notes/data/models/note_model.dart';
 import 'package:flutter/material.dart';
+import 'package:sdk_helpers/sdk_helpers.dart';
 
 class NotesCollection extends StatelessWidget {
   const NotesCollection({this.title, super.key});
@@ -38,7 +40,7 @@ class NotesCollection extends StatelessWidget {
                 (index, note) => NoteListItem(
                   note: note,
                   onNoteTap: (note) {
-                    print('❌ ${note.name}');
+                    log('❌ ${note.name}');
                   },
                   showBottomBorder: index != recentDummyNotes.length - 1,
                 ),
