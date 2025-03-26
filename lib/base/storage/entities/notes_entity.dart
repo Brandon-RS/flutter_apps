@@ -47,8 +47,7 @@ class NotesEntity extends Entity<NoteModel> {
   @override
   Future<NoteModel?> getById(String id) async {
     try {
-      // TODO(BRANDOM): Validate uuid
-      if (id.isEmpty) throw Exception('Invalid id');
+      if (uuid.validateV4(id)) throw Exception('Invalid id');
 
       final result = await db.query(
         tableName,
@@ -72,7 +71,7 @@ class NotesEntity extends Entity<NoteModel> {
 
       await db.transaction(
         (txn) => txn.insert(tableName, {
-          'id': uuid.v4(),
+          'id': uuid.safeV4(),
           'name': createDto.name,
           'icon': createDto.icon,
           'content': createDto.content,
