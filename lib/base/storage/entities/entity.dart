@@ -1,3 +1,4 @@
+import 'package:flit_notes/base/storage/db/db.dart';
 import 'package:flit_notes/base/utils/base_dto.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -6,7 +7,9 @@ abstract class Entity<T> {
 
   final String tableName;
 
-  Future<void> init(Database db) async {}
+  Database get db => Db.instance.db;
+
+  Future<void> init(Database root) async {}
 
   Future<List<T>> getAll() async => [];
 
