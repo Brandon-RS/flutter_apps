@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:flit_notes/base/storage/entities/collection_entity.dart';
+import 'package:flit_notes/base/storage/entities/junctions/note_labels_entity.dart';
+import 'package:flit_notes/base/storage/entities/label_entity.dart';
 import 'package:flit_notes/base/storage/entities/notes_entity.dart';
 import 'package:flit_notes/base/utils/env.dart';
 import 'package:path/path.dart';
@@ -20,7 +23,12 @@ class Db {
       path,
       version: 1,
       onCreate: (Database db, int version) async {
+        await CollectionEntity.to.init(db);
         await NotesEntity.to.init(db);
+        await LabelEntity.to.init(db);
+
+        // Junction tables
+        await NoteLabelsEntity.to.init(db);
       },
     );
 

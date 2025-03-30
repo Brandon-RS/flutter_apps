@@ -77,7 +77,7 @@ class NoteListItem extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Text(note.icon, style: context.textTheme.titleLarge),
+          child: Text(note.icon ?? '', style: context.textTheme.titleLarge),
         ),
         Expanded(
           child: DecoratedBox(

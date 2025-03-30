@@ -3,9 +3,10 @@ import 'package:flit_notes/base/utils/base_dto.dart';
 import 'package:sqflite/sqflite.dart';
 
 abstract class Entity<T> {
-  const Entity(this.tableName);
+  const Entity(this.table);
 
-  final String tableName;
+  /// The name of the table in the database.
+  final String table;
 
   Database get db => Db.instance.db;
 

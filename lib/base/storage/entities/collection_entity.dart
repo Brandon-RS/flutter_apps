@@ -1,17 +1,16 @@
 import 'dart:developer';
 
 import 'package:flit_notes/base/storage/entities/base/entity.dart';
-import 'package:flit_notes/base/storage/entities/collection_entity.dart';
-import 'package:flit_notes/features/library/data/dtos/create_note_dto.dart';
-import 'package:flit_notes/features/library/data/dtos/update_note_dto.dart';
-import 'package:flit_notes/features/notes/data/models/note_model.dart';
+import 'package:flit_notes/features/library/data/dtos/create_collection_dto.dart';
+import 'package:flit_notes/features/library/data/dtos/update_collection_dto.dart';
+import 'package:flit_notes/features/library/data/models/collection_model.dart';
 import 'package:sdk_helpers/sdk_helpers.dart';
 import 'package:sqflite/sqflite.dart';
 
-class NotesEntity extends Entity<NoteModel> {
-  const NotesEntity._() : super('notes');
+class CollectionEntity extends Entity<CollectionModel> {
+  const CollectionEntity._() : super('collections');
 
-  static const NotesEntity to = NotesEntity._();
+  static const CollectionEntity to = CollectionEntity._();
 
   @override
   Future<void> init(Database root) async {
@@ -21,83 +20,79 @@ class NotesEntity extends Entity<NoteModel> {
           'CREATE TABLE $table ('
           'id TEXT PRIMARY KEY NOT NULL,'
           'name TEXT NOT NULL,'
-          'content TEXT NOT NULL,'
           'created_at DATETIME DEFAULT CURRENT_TIMESTAMP,'
           'updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,'
-          'color TEXT,'
+          'description TEXT,'
           'icon TEXT,'
-          'collection_id TEXT,'
-          'FOREIGN KEY (collection_id) REFERENCES ${CollectionEntity.to.table}(id) ON DELETE SET NULL'
+          'color TEXT'
           ')',
         ),
       );
     } catch (error) {
-      log('Error creating `notes` table', error: error);
+      log('Error creating `$table` table', error: error);
     }
   }
 
   @override
-  Future<List<NoteModel>> getAll() async {
+  Future<List<CollectionModel>> getAll() async {
     try {
       final result = await db.query(table);
 
-      return result.map((e) => NoteModel.fromMap(e)).toList();
+      return result.map((e) => CollectionModel.fromMap(e)).toList();
     } catch (error) {
-      log('Error reading notes', error: error);
+      log('Error reading $table', error: error);
       return [];
     }
   }
 
   @override
-  Future<NoteModel?> getById(String id) async {
+  Future<CollectionModel?> getById(String id) async {
     try {
-      if (!uuid.validateV4(id)) throw Exception('Invalid id');
+      if (uuid.validateV4(id)) throw Exception('Invalid id');
 
       final result = await db.query(table, where: 'id = ?', whereArgs: [id]);
 
-      if (result.isEmpty) throw Exception('Note `$id` not found');
+      if (result.isEmpty) throw Exception('Collection `$id` not found');
 
-      return NoteModel.fromMap(result.first);
+      return CollectionModel.fromMap(result.first);
     } catch (error) {
-      log('Error reading note `$id`', error: error);
+      log('Error reading collection `$id`', error: error);
       return null;
     }
   }
 
   @override
-  Future<void> create(CreateNoteDto createDto) async {
+  Future<void> create(CreateCollectionDto createDto) async {
     try {
-      if (!createDto.validate()) throw Exception('Invalid note data');
+      if (!createDto.validate()) throw Exception('Invalid collection data');
 
       await db.transaction(
         (txn) => txn.insert(table, {
           'id': uuid.safeV4(),
           'name': createDto.name,
-          'content': createDto.content,
-          'color': createDto.color,
+          'description': createDto.description,
           'icon': createDto.icon,
-          'collection_id': createDto.collectionId,
+          'color': createDto.color,
         }, conflictAlgorithm: ConflictAlgorithm.replace),
       );
     } catch (error) {
-      log('Error creating note', error: error);
+      log('Error creating collection', error: error);
     }
   }
 
   @override
-  Future<void> update(UpdateNoteDto updateDto) async {
+  Future<void> update(UpdateCollectionDto updateDto) async {
     try {
-      if (!updateDto.validate()) throw Exception('Invalid note data');
+      if (!updateDto.validate()) throw Exception('Invalid collection data');
 
       await db.transaction(
         (txn) => txn.update(
           table,
           {
             'name': updateDto.name,
-            'content': updateDto.content,
-            'color': updateDto.color,
+            'description': updateDto.description,
             'icon': updateDto.icon,
-            'collection_id': updateDto.collectionId,
+            'color': updateDto.color,
             'updated_at': DateTime.now().toIso8601String(),
           },
           where: 'id = ?',
@@ -105,7 +100,7 @@ class NotesEntity extends Entity<NoteModel> {
         ),
       );
     } catch (error) {
-      log('Updating note `${updateDto.id}` failed', error: error);
+      log('Updating collection `${updateDto.id}` failed', error: error);
     }
   }
 

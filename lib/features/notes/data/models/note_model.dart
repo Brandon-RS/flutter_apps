@@ -7,10 +7,12 @@ class NoteModel {
   const NoteModel({
     required this.id,
     required this.name,
-    required this.icon,
     required this.content,
     required this.createdAt,
     required this.updatedAt,
+    this.color,
+    this.icon,
+    this.collectionId,
   });
 
   factory NoteModel.fromMap(Map<String, dynamic> json) =>
@@ -18,15 +20,17 @@ class NoteModel {
 
   final String id;
   final String name;
-  final String icon;
   final String content;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final String? color;
+  final String? icon;
+  final String? collectionId;
 
   Map<String, dynamic> toMap() => _$NoteModelToJson(this);
 
   @override
   String toString() {
-    return 'Note{id: $id, name: $name, icon: $icon, content: $content, createdAt: $createdAt, updatedAt: $updatedAt}';
+    return 'Note{id: $id, name: $name, content: $content, createdAt: $createdAt, updatedAt: $updatedAt, color: $color, icon: $icon, collectionId: $collectionId}';
   }
 }
