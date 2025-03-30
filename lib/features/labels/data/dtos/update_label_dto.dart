@@ -1,4 +1,4 @@
-import 'package:flit_notes/features/library/data/dtos/create_label_dto.dart';
+import 'package:flit_notes/features/labels/data/dtos/create_label_dto.dart';
 import 'package:sdk_helpers/sdk_helpers.dart';
 
 class UpdateLabelDto extends CreateLabelDto {

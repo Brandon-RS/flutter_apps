@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:flit_notes/base/storage/entities/base/entity.dart';
-import 'package:flit_notes/base/storage/entities/label_entity.dart';
-import 'package:flit_notes/base/storage/entities/notes_entity.dart';
+import 'package:flit_notes/features/labels/data/entities/label_entity.dart';
+import 'package:flit_notes/features/notes/data/entities/notes_entity.dart';
 import 'package:sqflite/sqflite.dart';
 
 class NoteLabelsEntity extends Entity {

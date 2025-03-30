@@ -1,10 +1,10 @@
 import 'dart:developer';
 
-import 'package:flit_notes/base/storage/entities/collection_entity.dart';
-import 'package:flit_notes/base/storage/entities/junctions/note_labels_entity.dart';
-import 'package:flit_notes/base/storage/entities/label_entity.dart';
-import 'package:flit_notes/base/storage/entities/notes_entity.dart';
 import 'package:flit_notes/base/utils/env.dart';
+import 'package:flit_notes/features/collections/data/entities/collection_entity.dart';
+import 'package:flit_notes/features/labels/data/entities/label_entity.dart';
+import 'package:flit_notes/features/notes/data/entities/junctions/note_labels_entity.dart';
+import 'package:flit_notes/features/notes/data/entities/notes_entity.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -23,6 +23,7 @@ class Db {
       path,
       version: 1,
       onCreate: (Database db, int version) async {
+        // Tables, order is important due to foreign keys
         await CollectionEntity.to.init(db);
         await NotesEntity.to.init(db);
         await LabelEntity.to.init(db);

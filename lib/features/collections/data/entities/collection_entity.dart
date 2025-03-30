@@ -1,16 +1,16 @@
 import 'dart:developer';
 
 import 'package:flit_notes/base/storage/entities/base/entity.dart';
-import 'package:flit_notes/features/library/data/dtos/create_label_dto.dart';
-import 'package:flit_notes/features/library/data/dtos/update_label_dto.dart';
-import 'package:flit_notes/features/notes/data/models/label_model.dart';
+import 'package:flit_notes/features/collections/data/dtos/create_collection_dto.dart';
+import 'package:flit_notes/features/collections/data/dtos/update_collection_dto.dart';
+import 'package:flit_notes/features/collections/data/models/collection_model.dart';
 import 'package:sdk_helpers/sdk_helpers.dart';
 import 'package:sqflite/sqflite.dart';
 
-class LabelEntity extends Entity<LabelModel> {
-  const LabelEntity._() : super('labels');
+class CollectionEntity extends Entity<CollectionModel> {
+  const CollectionEntity._() : super('collections');
 
-  static const LabelEntity to = LabelEntity._();
+  static const CollectionEntity to = CollectionEntity._();
 
   @override
   Future<void> init(Database root) async {
@@ -22,70 +22,76 @@ class LabelEntity extends Entity<LabelModel> {
           'name TEXT NOT NULL,'
           'created_at DATETIME DEFAULT CURRENT_TIMESTAMP,'
           'updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,'
+          'description TEXT,'
+          'icon TEXT,'
           'color TEXT'
           ')',
         ),
       );
     } catch (error) {
-      log('Error creating `labels` table', error: error);
+      log('Error creating `$table` table', error: error);
     }
   }
 
   @override
-  Future<List<LabelModel>> getAll() async {
+  Future<List<CollectionModel>> getAll() async {
     try {
       final result = await db.query(table);
 
-      return result.map((e) => LabelModel.fromMap(e)).toList();
+      return result.map((e) => CollectionModel.fromMap(e)).toList();
     } catch (error) {
-      log('Error reading labels', error: error);
+      log('Error reading $table', error: error);
       return [];
     }
   }
 
   @override
-  Future<LabelModel?> getById(String id) async {
+  Future<CollectionModel?> getById(String id) async {
     try {
-      if (!uuid.validateV4(id)) throw Exception('Invalid id');
+      if (uuid.validateV4(id)) throw Exception('Invalid id');
 
       final result = await db.query(table, where: 'id = ?', whereArgs: [id]);
 
-      if (result.isEmpty) throw Exception('Label `$id` not found');
+      if (result.isEmpty) throw Exception('Collection `$id` not found');
 
-      return LabelModel.fromMap(result.first);
+      return CollectionModel.fromMap(result.first);
     } catch (error) {
-      log('Error reading label `$id`', error: error);
+      log('Error reading collection `$id`', error: error);
       return null;
     }
   }
 
   @override
-  Future<void> create(CreateLabelDto createDto) async {
+  Future<void> create(CreateCollectionDto createDto) async {
     try {
-      if (!createDto.validate()) throw Exception('Invalid label data');
+      if (!createDto.validate()) throw Exception('Invalid collection data');
 
       await db.transaction(
         (txn) => txn.insert(table, {
           'id': uuid.safeV4(),
           'name': createDto.name,
+          'description': createDto.description,
+          'icon': createDto.icon,
           'color': createDto.color,
         }, conflictAlgorithm: ConflictAlgorithm.replace),
       );
     } catch (error) {
-      log('Error creating label', error: error);
+      log('Error creating collection', error: error);
     }
   }
 
   @override
-  Future<void> update(UpdateLabelDto updateDto) async {
+  Future<void> update(UpdateCollectionDto updateDto) async {
     try {
-      if (!updateDto.validate()) throw Exception('Invalid label data');
+      if (!updateDto.validate()) throw Exception('Invalid collection data');
 
       await db.transaction(
         (txn) => txn.update(
           table,
           {
             'name': updateDto.name,
+            'description': updateDto.description,
+            'icon': updateDto.icon,
             'color': updateDto.color,
             'updated_at': DateTime.now().toIso8601String(),
           },
@@ -94,7 +100,7 @@ class LabelEntity extends Entity<LabelModel> {
         ),
       );
     } catch (error) {
-      log('Updating label `${updateDto.id}` failed', error: error);
+      log('Updating collection `${updateDto.id}` failed', error: error);
     }
   }
 
