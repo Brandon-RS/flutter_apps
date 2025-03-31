@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flit_notes/base/extensions/context_ext.dart';
+import 'package:flit_notes/base/presentation/widgets/app_top_bar.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -10,9 +11,9 @@ class QuickFindPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: context.colors.secondaryFixed,
-      child: const Center(child: Text('QuickFindPage')),
+    return Scaffold(
+      appBar: AppTopBar(title: context.tr.quickFind),
+      body: const Center(child: Text('QuickFindPage')),
     );
   }
 }

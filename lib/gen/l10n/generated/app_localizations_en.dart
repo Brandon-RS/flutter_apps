@@ -22,4 +22,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settings => 'Settings';
+
+  @override
+  String get library => 'Library';
+
+  @override
+  String get collections => 'Collections';
 }

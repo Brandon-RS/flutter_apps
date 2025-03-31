@@ -15,11 +15,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notes => 'Notas';
 
   @override
-  String get home => 'Home';
+  String get home => 'Inicio';
 
   @override
-  String get quickFind => 'Quick Find';
+  String get quickFind => 'Búsqueda Rápida';
 
   @override
-  String get settings => 'Settings';
+  String get settings => 'Configuraciones';
+
+  @override
+  String get library => 'Biblioteca';
+
+  @override
+  String get collections => 'Colecciones';
 }

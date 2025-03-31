@@ -1,4 +1,9 @@
 {
   "appName": "Flit Notes",
-  "notes": "Notas"
+  "notes": "Notas",
+  "home": "Inicio",
+  "quickFind": "Búsqueda Rápida",
+  "settings": "Configuraciones",
+  "library": "Biblioteca",
+  "collections": "Colecciones"
 }

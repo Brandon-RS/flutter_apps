@@ -12,27 +12,12 @@ class AppBottomBar extends StatelessWidget {
     return BottomAppBar(
       color: context.colors.primary,
       padding: EdgeInsets.zero,
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _BottomAction(
-            icon: Icons.window,
-            label: context.tr.home,
-            path: '/',
-            index: 0,
-          ),
-          _BottomAction(
-            icon: Icons.search,
-            label: context.tr.quickFind,
-            path: '/find',
-            index: 1,
-          ),
-          _BottomAction(
-            icon: Icons.settings,
-            label: context.tr.settings,
-            path: '/settings',
-            index: 2,
-          ),
+          _BottomAction(icon: Icons.window, path: '/', index: 0),
+          _BottomAction(icon: Icons.search, path: '/find', index: 1),
+          _BottomAction(icon: Icons.settings, path: '/settings', index: 2),
         ],
       ),
     );
@@ -43,13 +28,11 @@ class _BottomAction extends StatelessWidget {
   const _BottomAction({
     required this.path,
     required this.icon,
-    required this.label,
     required this.index,
   });
 
   final String path;
   final IconData icon;
-  final String label;
   final int index;
 
   @override
@@ -57,7 +40,7 @@ class _BottomAction extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(12),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.all(10),
         child: BlocBuilder<AppBottomBarCubit, AppBottomBarState>(
           builder: (context, state) {
             final color =
@@ -65,17 +48,7 @@ class _BottomAction extends StatelessWidget {
                     ? context.colors.primaryFixed
                     : context.colors.outlineVariant;
 
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 5,
-              children: [
-                Icon(icon, size: 30, color: color),
-                Text(
-                  label,
-                  style: context.textTheme.bodyMedium?.copyWith(color: color),
-                ),
-              ],
-            );
+            return Icon(icon, size: 30, color: color);
           },
         ),
       ),

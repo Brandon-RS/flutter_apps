@@ -3,5 +3,7 @@
   "notes": "Notes",
   "home": "Home",
   "quickFind": "Quick Find",
-  "settings": "Settings"
+  "settings": "Settings",
+  "library": "Library",
+  "collections": "Collections"
 }
