@@ -18,6 +18,8 @@ extension ContextExt on BuildContext {
   bool get isLight => theme.brightness == Brightness.light;
 
   EdgeInsets get padding => MediaQuery.paddingOf(this);
+  EdgeInsets get viewInsets => MediaQuery.viewInsetsOf(this);
+  EdgeInsets get viewPadding => MediaQuery.viewPaddingOf(this);
 
   Orientation get orientation => MediaQuery.orientationOf(this);
   bool get isLandscape => orientation == Orientation.landscape;

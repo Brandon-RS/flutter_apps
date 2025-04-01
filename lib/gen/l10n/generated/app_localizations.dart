@@ -136,6 +136,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Collections'**
   String get collections;
+
+  /// No description provided for @createCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Collection'**
+  String get createCollection;
+
+  /// No description provided for @createNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Note'**
+  String get createNote;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @collectionName.
+  ///
+  /// In en, this message translates to:
+  /// **'Collection Name'**
+  String get collectionName;
+
+  /// No description provided for @collectionDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Collection Description'**
+  String get collectionDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

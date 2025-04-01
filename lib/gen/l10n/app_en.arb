@@ -5,5 +5,12 @@
   "quickFind": "Quick Find",
   "settings": "Settings",
   "library": "Library",
-  "collections": "Collections"
+  "collections": "Collections",
+  "createCollection": "Create Collection",
+  "createNote": "Create Note",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "done": "Done",
+  "collectionName": "Collection Name",
+  "collectionDescription": "Collection Description"
 }

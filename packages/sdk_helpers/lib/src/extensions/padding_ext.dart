@@ -10,4 +10,8 @@ extension BasePaddingExt on Widget {
   Widget addEnd(double value) => Padding(padding: EdgeInsetsDirectional.only(end: value), child: this);
 
   Widget addHorizontal(double value) => Padding(padding: EdgeInsets.symmetric(horizontal: value), child: this);
+
+  Widget addVertical(double value) => Padding(padding: EdgeInsets.symmetric(vertical: value), child: this);
+
+  Widget addAll(double value) => Padding(padding: EdgeInsets.all(value), child: this);
 }

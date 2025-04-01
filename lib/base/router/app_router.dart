@@ -20,6 +20,9 @@ class AppRouter extends RootStackRouter {
   static AppRouter get instance => appRouter;
 
   @override
+  RouteType get defaultRouteType => const RouteType.adaptive();
+
+  @override
   List<AutoRoute> get routes => [
     AutoRoute(
       initial: true,
