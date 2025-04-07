@@ -19,8 +19,8 @@ class CollectionModel {
 
   final String id;
   final String name;
-  final int createdAt;
-  final int updatedAt;
+  final DateTime createdAt;
+  final DateTime updatedAt;
   final String? description;
   final String? icon;
   final String? color;

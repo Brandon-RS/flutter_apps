@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flit_notes/base/data/exceptions/response_exception.dart';
 import 'package:flit_notes/base/storage/entities/base/entity.dart';
 import 'package:flit_notes/features/collections/data/dtos/create_collection_dto.dart';
 import 'package:flit_notes/features/collections/data/dtos/update_collection_dto.dart';
@@ -41,14 +42,18 @@ class CollectionEntity extends Entity<CollectionModel> {
       return result.map((e) => CollectionModel.fromMap(e)).toList();
     } catch (error) {
       log('Error reading $table', error: error);
-      return [];
+
+      throw const ResponseException(
+        message: 'Failed to fetch collections',
+        code: 1,
+      );
     }
   }
 
   @override
-  Future<CollectionModel?> getById(String id) async {
+  Future<CollectionModel> getById(String id) async {
     try {
-      if (uuid.validateV4(id)) throw Exception('Invalid id');
+      if (!uuid.validateV4(id)) throw Exception('Invalid id');
 
       final result = await db.query(table, where: 'id = ?', whereArgs: [id]);
 
@@ -57,26 +62,38 @@ class CollectionEntity extends Entity<CollectionModel> {
       return CollectionModel.fromMap(result.first);
     } catch (error) {
       log('Error reading collection `$id`', error: error);
-      return null;
+
+      throw const ResponseException(
+        message: 'Failed to fetch collection',
+        code: 1,
+      );
     }
   }
 
   @override
-  Future<void> create(CreateCollectionDto createDto) async {
+  Future<CollectionModel> create(CreateCollectionDto createDto) async {
     try {
       if (!createDto.validate()) throw Exception('Invalid collection data');
+      final id = uuid.safeV4();
 
       await db.transaction(
         (txn) => txn.insert(table, {
-          'id': uuid.safeV4(),
+          'id': id,
           'name': createDto.name,
           'description': createDto.description,
           'icon': createDto.icon,
           'color': createDto.color,
         }, conflictAlgorithm: ConflictAlgorithm.replace),
       );
+
+      return await getById(id);
     } catch (error) {
       log('Error creating collection', error: error);
+
+      throw const ResponseException(
+        message: 'Failed to create collection',
+        code: 1,
+      );
     }
   }
 

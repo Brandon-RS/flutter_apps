@@ -178,6 +178,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Collection Description'**
   String get collectionDescription;
+
+  /// No description provided for @collectionNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Collection name is required'**
+  String get collectionNameRequired;
+
+  /// No description provided for @somethingIsWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something is wrong'**
+  String get somethingIsWrong;
+
+  /// No description provided for @makeSureToFillAllRequiredData.
+  ///
+  /// In en, this message translates to:
+  /// **'Make sure to fill all required data'**
+  String get makeSureToFillAllRequiredData;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

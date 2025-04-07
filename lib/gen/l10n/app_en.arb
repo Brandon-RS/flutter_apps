@@ -12,5 +12,8 @@
   "delete": "Delete",
   "done": "Done",
   "collectionName": "Collection Name",
-  "collectionDescription": "Collection Description"
+  "collectionDescription": "Collection Description",
+  "collectionNameRequired": "Collection name is required",
+  "somethingIsWrong": "Something is wrong",
+  "makeSureToFillAllRequiredData": "Make sure to fill all required data"
 }

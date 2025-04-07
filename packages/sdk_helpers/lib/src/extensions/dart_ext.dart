@@ -13,3 +13,9 @@ extension BaseNullableObjectExt on Object? {
 extension BaseNumExt on num {
   Duration get asMilliseconds => Duration(milliseconds: toInt());
 }
+
+extension BaseStringExt on String? {
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
+
+  String get orEmpty => this ?? '';
+}

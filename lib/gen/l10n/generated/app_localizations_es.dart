@@ -49,4 +49,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get collectionDescription => 'Collection Description';
+
+  @override
+  String get collectionNameRequired => 'Collection name is required';
+
+  @override
+  String get somethingIsWrong => 'Something is wrong';
+
+  @override
+  String get makeSureToFillAllRequiredData => 'Make sure to fill all required data';
 }
