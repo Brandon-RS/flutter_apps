@@ -60,7 +60,10 @@ class _LibraryPageState extends StatelessWidget {
                       ..read<AddButtonCubit>().instantClose()
                       ..navigateToPath('notes');
                   },
-                  child: const Icon(Icons.note_add_rounded),
+                  child: Icon(
+                    Icons.note_add_rounded,
+                    color: context.colors.onPrimary.withAlpha(100),
+                  ),
                 ),
               );
             },
@@ -79,7 +82,10 @@ class _LibraryPageState extends StatelessWidget {
                       ..read<AddButtonCubit>().instantClose()
                       ..navigateToPath('collections');
                   },
-                  child: const Icon(Icons.folder_rounded),
+                  child: Icon(
+                    Icons.folder_rounded,
+                    color: context.colors.onPrimary.withAlpha(100),
+                  ),
                 ),
               );
             },
