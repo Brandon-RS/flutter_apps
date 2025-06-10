@@ -4,30 +4,30 @@ import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
 
-/// The translations for Spanish Castilian (`es`).
-class AppLocalizationsEs extends AppLocalizations {
-  AppLocalizationsEs([String locale = 'es']) : super(locale);
+/// The translations for English (`en`).
+class AppLocalizationsEn extends AppLocalizations {
+  AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
   String get appName => 'Flit Notes';
 
   @override
-  String get notes => 'Notas';
+  String get notes => 'Notes';
 
   @override
-  String get home => 'Inicio';
+  String get home => 'Home';
 
   @override
-  String get quickFind => 'Búsqueda Rápida';
+  String get quickFind => 'Quick Find';
 
   @override
-  String get settings => 'Configuraciones';
+  String get settings => 'Settings';
 
   @override
-  String get library => 'Biblioteca';
+  String get library => 'Library';
 
   @override
-  String get collections => 'Colecciones';
+  String get collections => 'Collections';
 
   @override
   String get createCollection => 'Create Collection';
@@ -57,5 +57,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get somethingIsWrong => 'Something is wrong';
 
   @override
-  String get makeSureToFillAllRequiredData => 'Make sure to fill all required data';
+  String get makeSureToFillAllRequiredData =>
+      'Make sure to fill all required data';
 }

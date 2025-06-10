@@ -2,19 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "dev",
+      "name": "flit-notes-dev",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_dev.dart",
+      "program": "apps/flit_notes/lib/main_dev.dart",
       "flutterMode": "debug",
       "args": ["--flavor", "dev", "-t", "lib/main_dev.dart"]
     },
     {
-      "name": "prod",
+      "name": "flit-notes-prod",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_prod.dart",
-      "flutterMode": "debug",
+      "program": "apps/flit_notes/lib/main_prod.dart",
+      "flutterMode": "release",
       "args": ["--flavor", "prod", "-t", "lib/main_prod.dart"]
     },
   ]

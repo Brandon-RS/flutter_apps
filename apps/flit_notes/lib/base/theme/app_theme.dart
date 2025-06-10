@@ -63,7 +63,7 @@ class AppTheme {
         ),
       ),
 
-      tabBarTheme: TabBarTheme(
+      tabBarTheme: TabBarThemeData(
         indicatorColor: colors.primary,
         indicator: UnderlineTabIndicator(
           borderSide: BorderSide(color: colors.primary, width: kBorderWidth),

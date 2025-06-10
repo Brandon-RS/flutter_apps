@@ -2,11 +2,8 @@ import 'package:flit_notes/base/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 
 class AppDialogStyles {
-  static DialogTheme dialogTheme(
-    TextTheme textTheme,
-    ColorScheme colors,
-  ) {
-    return DialogTheme(
+  static DialogThemeData dialogTheme(TextTheme textTheme, ColorScheme colors) {
+    return DialogThemeData(
       backgroundColor: colors.surface,
       elevation: kElevation,
       shape: RoundedRectangleBorder(
