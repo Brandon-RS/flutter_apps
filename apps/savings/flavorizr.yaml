@@ -1,0 +1,38 @@
+flavors:
+  dev:
+    app:
+      name: "Savings (Dev)"
+
+    android:
+      applicationId: "pub.brs.savings.dev"
+    ios:
+      bundleId: "pub.brs.savings.dev"
+
+  prod:
+    app:
+      name: "Savings"
+
+    android:
+      applicationId: "pub.brs.savings"
+    ios:
+      bundleId: "pub.brs.savings"
+
+instructions:
+  - assets:download
+  - assets:extract
+  - android:flavorizrGradle
+  - android:buildGradle
+  - android:androidManifest
+  - android:dummyAssets
+  - android:icons
+  - ios:xcconfig
+  - ios:buildTargets
+  - ios:schema
+  - ios:plist
+  - ios:icons
+  - ios:dummyAssets
+  - flutter:flavors
+  - assets:clean
+
+# Run the following command to generate the flavors:
+# dart run flutter_flavorizr

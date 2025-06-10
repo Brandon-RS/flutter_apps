@@ -17,5 +17,21 @@
       "flutterMode": "release",
       "args": ["--flavor", "prod", "-t", "lib/main_prod.dart"]
     },
+    {
+      "name": "savings-dev",
+      "request": "launch",
+      "type": "dart",
+      "program": "apps/savings/lib/main_dev.dart",
+      "flutterMode": "debug",
+      "args": ["--flavor", "dev", "-t", "lib/main_dev.dart"]
+    },
+    {
+      "name": "savings-prod",
+      "request": "launch",
+      "type": "dart",
+      "program": "apps/savings/lib/main_prod.dart",
+      "flutterMode": "debug",
+      "args": ["--flavor", "prod", "-t", "lib/main_prod.dart"]
+    }
   ]
 }
