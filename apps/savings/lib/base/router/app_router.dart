@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:savings/base/presentation/pages/app_layout_page.dart';
+import 'package:savings/base/presentation/pages/unknown_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -15,5 +16,8 @@ class AppRouter extends RootStackRouter {
   RouteType get defaultRouteType => const RouteType.adaptive();
 
   @override
-  List<AutoRoute> get routes => [AutoRoute(initial: true, page: AppLayoutRoute.page, path: AppLayoutPage.routePath)];
+  List<AutoRoute> get routes => [
+    AutoRoute(initial: true, page: AppLayoutRoute.page, path: AppLayoutPage.routePath),
+    AutoRoute(page: UnknownRoute.page, path: UnknownPage.routePath),
+  ];
 }
